@@ -9,16 +9,122 @@ format:
     center: true
     incremental: true
     auto-animate: true
+    transition: fade
 execute: 
   message: false
   warning: false
   cache: false
+  echo: true
+  output: false
 title-slide-attributes:
   data-background-image: assets/rru-hex-bg-gradient-dark.svg
   data-background-size: cover
 ---
 
-## Introduction
+# Data Wrangling and Analysis
 
-*TODO* Create an example file that demonstrates the formatting and features of your format.
+```{r}
+#| echo: false
+library(tidyverse)
+library(janitor)
+
+penguins <- read_csv("../penguins.csv")
+```
+
+## Update Everything {.inverse}
+
+## Update Everything
+
+- R
+
+- RStudio
+
+- R Packages
+
+
+## Import Data
+
+## Your Turn {.your-turn}
+
+1. Download data from [https://rfor.us/penguins](https://rfor.us/penguins)
+
+1. Create a new RStudio project
+
+1. Copy the data into the RStudio project
+
+1. Create a new R script file and add code to import your data (refer to Getting Started with R if necessary)
+
+1. Save your R script file
+
+## The tidyverse
+
+---
+
+### Base R
+
+```{r}
+#| output: true
+table(penguins$island,
+      penguins$sex)
+```
+
+
+- Starts with function, data frame in parentheses
+
+- Uses dollar sign notation (data_frame$variable)
+
+- Requires repeating data frame name each time you call it
+
+---
+
+### Tidyverse
+
+```{r}
+#| output: true
+
+penguins |> 
+  tabyl(island, sex)
+```
+
+- "data frame first, data frame once" - [Alison Hill](https://ohsu-conj620.netlify.app/slides/cm012.html#20)
+
+- Uses the pipe (`|>`) to chain together a series of functions
+
+
+
+## Pipes
+
+---
+
+```{r}
+select(mutate(penguins, body_mass_lbs = body_mass_g / 453.6), body_mass_g)
+```
+
+---
+
+```{r}
+penguins |> 
+  mutate(body_mass_lbs = body_mass_g / 453.6) |> 
+  select(body_mass_g)
+```
+
+
+## `select()`
+
+```{r}
+#| output: false
+select(penguins, bill_length_mm) 
+```
+
+## `select()`
+
+```{r}
+select(penguins, body_mass_g)
+```
+
+## `mutate()`
+
+```{r}
+mutate(penguins, body_mass_lbs = body_mass_g / 453.6)
+```
 
