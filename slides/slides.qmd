@@ -27,11 +27,43 @@ title-slide-attributes:
 #| echo: false
 library(tidyverse)
 library(janitor)
+library(gt)
+library(gtExtras)
 
 penguins <- read_csv("../penguins.csv")
 ```
 
-## Update Everything {.inverse}
+```{r}
+#| echo: false
+rru_table <- function(df) {
+  df |> 
+    gt() |> 
+    tab_style(
+      style = cell_text(weight = "normal",
+                        size = px(30),
+                        color = "#404e6b"),
+      locations = cells_column_labels()
+    ) |> 
+    tab_style(
+      style = cell_text(size = px(30),
+                        color = "#404e6b"),
+      locations = cells_body()
+    ) |> 
+    gt_theme_538() |> 
+    opt_table_font(font = list(google_font("Inter"), default_fonts()), weight = 400) |> 
+    tab_options(
+      table.background.color = "transparent",
+      column_labels.background.color = "transparent",
+      table.width = pct(100),
+      heading.padding = px(10),
+      data_row.padding = px(10),
+      column_labels.border.bottom.color = "#404e6b"
+    )
+}
+```
+
+
+# Update Everything {.inverse}
 
 ## Update Everything
 
@@ -41,14 +73,29 @@ penguins <- read_csv("../penguins.csv")
 
 - R Packages
 
-
-## Import Data
+::: {.notes}
+- How to check version of R
+- How to check version of RStudio
+- How to check versions of packages
+- Explain that updating R requires reinstall of packages
+:::
 
 ## Your Turn {.your-turn}
 
-1. Download data from [https://rfor.us/penguins](https://rfor.us/penguins)
+1. Update R
+
+1. Update RStudio
+
+1. Update all packages
+
+
+# Start a New Project and Import Data {.inverse}
+
+## Your Turn {.your-turn}
 
 1. Create a new RStudio project
+
+1. Download data from [https://rfor.us/penguins](https://rfor.us/penguins)
 
 1. Copy the data into the RStudio project
 
@@ -56,11 +103,10 @@ penguins <- read_csv("../penguins.csv")
 
 1. Save your R script file
 
-## The tidyverse
+# The Tidyverse {.inverse}
 
----
 
-### Base R
+## Base R Code
 
 ```{r}
 #| output: true
@@ -73,11 +119,11 @@ table(penguins$island,
 
 - Uses dollar sign notation (data_frame$variable)
 
-- Requires repeating data frame name each time you call it
+- Repeats data frame name each time you call it
 
----
 
-### Tidyverse
+
+## Tidyverse Code
 
 ```{r}
 #| output: true
@@ -86,21 +132,23 @@ penguins |>
   tabyl(island, sex)
 ```
 
-- "data frame first, data frame once" - [Alison Hill](https://ohsu-conj620.netlify.app/slides/cm012.html#20)
+- "Data frame first, data frame once" - [Alison Hill](https://ohsu-conj620.netlify.app/slides/cm012.html#20)
 
 - Uses the pipe (`|>`) to chain together a series of functions
 
+# Pipes {.inverse}
 
-
-## Pipes
-
----
+## Code Without Pipes
 
 ```{r}
-select(mutate(penguins, body_mass_lbs = body_mass_g / 453.6), body_mass_g)
+select(
+  mutate(penguins, 
+         body_mass_lbs = body_mass_g / 453.6), 
+  body_mass_g
+)
 ```
 
----
+## Code With Pipes
 
 ```{r}
 penguins |> 
@@ -108,23 +156,210 @@ penguins |>
   select(body_mass_g)
 ```
 
+---
+
+:::: {.columns}
+
+::: {.column width="50%"}
+<p style="font-size: 200px; text-align: center;">
+`|>`
+</p>
+
+<p style="text-align: center;">
+Native pipe
+</p>
+:::
+
+::: {.column width="50%"}
+<p style="font-size: 200px; text-align: center;">
+`%>%`
+</p>
+
+<p style="text-align: center;">
+Tidyverse pipe
+</p>
+:::
+
+::::
+
+## Your Turn {.your-turn}
+
+1. Make sure you have R 4.1 or higher
+
+1. Switch to using native pipe by default
+
+::: {.notes}
+- Show why we use pipes
+- Show how to switch to native pipe
+:::
+
+
+# `select()` {.inverse}
 
 ## `select()`
 
 ```{r}
-#| output: false
-select(penguins, bill_length_mm) 
+#| eval: false
+data_frame |> 
+  select(variable)
 ```
 
-## `select()`
-
-```{r}
-select(penguins, body_mass_g)
-```
+# `mutate()` {.inverse}
 
 ## `mutate()`
 
 ```{r}
-mutate(penguins, body_mass_lbs = body_mass_g / 453.6)
+#| eval: false
+data_frame |> 
+  mutate(new_variable = variable + 1)
 ```
 
+# `filter()` {.inverse}
+
+## `filter()`
+
+```{r}
+#| eval: false
+data_frame |> 
+  filter(variable > 1)
+```
+
+## Comparisons
+
+```{r}
+#| echo: false
+#| output: true
+
+tibble::tribble(
+  ~Operator, ~Description, ~Usage,
+  "<", "less than", "x < y",
+  "<=", "less than or equal to", "x <= y",
+  ">", "greater than", "x > y",
+  ">=", "greater than or equal to", "x >= y",
+  "==", "exactly equal to", "x == y",
+  "!=", "not equal to", "x != y",
+  "%in%", "group membership", "x %in% y",
+  "is.na", "is missing", "is.na(x)",
+  "!is.na", "is not missing", "!is.na(x)"
+) |> 
+  rru_table()
+```
+
+::: {.notes}
+- Show examples using comparisons
+:::
+
+## Logical Operators
+
+```{r}
+#| echo: false
+#| output: true
+
+tibble::tribble(
+  ~Operator, ~Description, ~Usage,
+  "&", "and", "x & y",
+  "|", "or", "x | y",
+  "!", "not", "!x"
+) |> 
+  rru_table()
+```
+
+## Logical Operators
+
+```{r}
+#| eval: false
+data_frame |> 
+  filter(variable > 1 & variable_2 < 1)
+```
+
+::: {.notes}
+- Show examples combining things with logical operators
+:::
+
+
+# `summarize()` {.inverse}
+
+::: {.notes}
+Mention American and British spellings
+:::
+
+## `summarize()`
+
+```{r}
+#| eval: false
+data_frame |> 
+  summarize(summary_variable = summary_function(variable))
+```
+
+
+## Summary Functions
+
+```{r}
+#| echo: false
+#| output: true
+#| 
+tribble(
+  ~Description, ~Function,
+  "number", "n()",
+  "sum", "sum(x)",
+  "minimum", "min(x)",
+  "maximum", "max(x)",
+  "mean", "mean(x)",
+  "median", "median(x)",
+  "standard deviation", "sd(x)",
+  "variance", "var(x)",
+  "rank", "rank(x)"
+) |> 
+  rru_table()
+```
+
+
+# `group_by()` and `summarize()` {.inverse}
+
+## `group_by()` and `summarize()`
+
+```{r}
+#| eval: false
+data_frame |> 
+  group_by(grouping_variable) |> 
+  summarize(summary_variable = summary_function(variable))
+```
+
+::: {.notes}
+- Also show .by
+:::
+
+# `arrange()` {.inverse}
+
+## `arrange()`
+
+```{r}
+#| eval: false
+data_frame |> 
+  arrange(variable)
+```
+
+
+
+# Create a New Data Frame {.inverse}
+
+## Create a New Data Frame
+
+```{r}
+#| eval: false
+data_frame_2 <- data_frame |> 
+  filter(variable > 1) |> 
+  arrange(variable)
+```
+
+
+::: {.notes}
+- Show long pipeline and display results
+- Show long pipeline and save results
+:::
+
+# Bring it All Together {.inverse}
+
+::: {.notes}
+- Use [R Community Survey](https://github.com/rstudio/r-community-survey)
+:::
