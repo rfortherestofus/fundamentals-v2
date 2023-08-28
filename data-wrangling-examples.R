@@ -15,10 +15,10 @@ penguins |>
   select(bill_length_mm)
 
 # We can also use select() for multiple variables:
-  
+
 penguins %>%
   select(bill_length_mm, bill_depth_mm)
-  
+
 # select() has several helper functions for selecting variables.
 
 # The contains() function finds any variable with certain text in the variable name:
@@ -42,12 +42,12 @@ penguins |>
   select(species:bill_length_mm)
 
 # We can drop variables using the -var format:
-  
+
 penguins |> 
   select(bill_length_mm)
 
 # We can drop a set of variables using the -(var1:var2) format:
-  
+
 penguins |> 
   select(-(bill_length_mm:flipper_length_mm))
 
@@ -193,5 +193,45 @@ penguins |>
 
 penguins |> 
   count(island, year)
+
+# arrange() ---------------------------------------------------------------
+
+# With arrange(), we can reorder rows in a data frame based on the values of one or more variables. 
+# R arranges in ascending order by default.
+
+penguins %>% 
+  arrange(bill_length_mm)
+
+# We can also arrange in descending order using desc().
+
+penguins %>% 
+  arrange(desc(bill_length_mm))
+
+# We often use arrange() at the end of pipelines to display things in order.
+
+penguins |> 
+  group_by(island) |> 
+  summarize(number_of_penguins = n()) |> 
+  arrange(number_of_penguins)
+
+# Create a New Data Frame -------------------------------------------------
+
+# Running pipelines simply displays the result
+# If we want to save the result, we need to use the assignment operator
+
+# Most people use the left-hand assignment operator as follows:
+
+penguins_by_island_v1 <- penguins |> 
+  group_by(island) |> 
+  summarize(number_of_penguins = n()) |> 
+  arrange(number_of_penguins)
+
+# You can also use the right-hand assignment operator as follows:
+
+penguins |> 
+  group_by(island) |> 
+  summarize(number_of_penguins = n()) |> 
+  arrange(number_of_penguins) -> penguins_by_island_v2
+
 
 

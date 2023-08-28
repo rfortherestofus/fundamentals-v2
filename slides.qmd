@@ -3,12 +3,12 @@ title: Fundamentals of R
 format:
   rfortherestofus-slides-revealjs:
     menu: false
-    progress: true
-    slide-number: true
+    progress: false
+    slide-number: false
     show-slide-number: print
     center: true
     incremental: true
-    auto-animate: true
+    auto-animate: false
     transition: fade
 execute: 
   message: false
@@ -21,7 +21,7 @@ title-slide-attributes:
   data-background-size: cover
 ---
 
-# Data Wrangling and Analysis
+
 
 ```{r}
 #| echo: false
@@ -30,7 +30,7 @@ library(janitor)
 library(gt)
 library(gtExtras)
 
-penguins <- read_csv("../penguins.csv")
+penguins <- read_csv("penguins.csv")
 ```
 
 ```{r}
@@ -67,11 +67,11 @@ rru_table <- function(df) {
 
 ## Update Everything
 
-- R
+1. R
 
-- RStudio
+1. RStudio
 
-- R Packages
+1. R Packages
 
 ::: {.notes}
 - How to check version of R
@@ -89,7 +89,7 @@ rru_table <- function(df) {
 1. Update all packages
 
 
-# Start a New Project and Import Data {.inverse}
+# Start a New Project {.inverse}
 
 ## Your Turn {.your-turn}
 
@@ -102,6 +102,8 @@ rru_table <- function(df) {
 1. Create a new R script file and add code to import your data (refer to Getting Started with R if necessary)
 
 1. Save your R script file
+
+# Data Wrangling and Analysis {.inverse}
 
 # The Tidyverse {.inverse}
 
@@ -356,6 +358,7 @@ data_frame_2 <- data_frame |>
 ::: {.notes}
 - Show long pipeline and display results
 - Show long pipeline and save results
+- We typically save objects to use them in ggplot or tables later on
 :::
 
 # Bring it All Together {.inverse}
