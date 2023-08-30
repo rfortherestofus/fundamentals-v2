@@ -1,4 +1,3 @@
-
 # Load Packages -----------------------------------------------------------
 
 library(tidyverse)
@@ -9,6 +8,8 @@ penguins <- read_csv("penguins.csv")
 
 # select() ----------------------------------------------------------------
 
+penguins
+
 # With select() we can select variables from the larger data frame.
 
 penguins |> 
@@ -16,17 +17,19 @@ penguins |>
 
 # We can also use select() for multiple variables:
 
-penguins %>%
+penguins |>
   select(bill_length_mm, bill_depth_mm)
 
 # select() has several helper functions for selecting variables.
 
-# The contains() function finds any variable with certain text in the variable name:
+# The contains() function finds any variable with certain text 
+# in the variable name:
 
-penguins %>%
+penguins |>
   select(contains("bill"))
 
-# The starts_with() function allows us to select variables that start with certain text:
+# The starts_with() function allows us to select variables 
+# that start with certain text:
 
 penguins |> 
   select(starts_with("bill"))
@@ -44,7 +47,7 @@ penguins |>
 # We can drop variables using the -var format:
 
 penguins |> 
-  select(bill_length_mm)
+  select(-bill_length_mm)
 
 # We can drop a set of variables using the -(var1:var2) format:
 

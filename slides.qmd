@@ -146,8 +146,7 @@ penguins |>
 select(
   mutate(penguins, 
          body_mass_lbs = body_mass_g / 453.6), 
-  body_mass_g
-)
+  body_mass_lbs)
 ```
 
 ## Code With Pipes
@@ -155,8 +154,12 @@ select(
 ```{r}
 penguins |> 
   mutate(body_mass_lbs = body_mass_g / 453.6) |> 
-  select(body_mass_g)
+  select(body_mass_lbs)
 ```
+
+## Pipes = "Then"
+
+Every time you see a pipe, replace it with the word "then"
 
 ---
 
@@ -184,17 +187,51 @@ Tidyverse pipe
 
 ::::
 
+## Keyboard Shortcut for Pipes
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Mac**
+
+Command + Shift + M
+:::
+
+::: {.column width="50%"}
+**Windows**
+
+Control + Shift + M
+:::
+
+::::
+
 ## Your Turn {.your-turn}
 
 1. Make sure you have R 4.1 or higher
 
 1. Switch to using native pipe by default
 
+1. Confirm that the keyboard shortcut works to insert a native pipe
+
 ::: {.notes}
 - Show why we use pipes
 - Show how to switch to native pipe
 :::
 
+
+# Tidyverse Functions
+
+- `select()` to keep and drop **columns**
+
+- `mutate()` to **create and change variables**
+
+- `filter()` to keep and drop **rows**
+
+- `summarize()` to create **summaries** of our data
+
+- `group_by()` and `summarize()` to create **grouped summaries**
+
+- `arrange()` to **reorder** our data
 
 # `select()` {.inverse}
 
