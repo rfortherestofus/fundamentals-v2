@@ -202,39 +202,45 @@ penguins |>
 # With arrange(), we can reorder rows in a data frame based on the values of one or more variables. 
 # R arranges in ascending order by default.
 
-penguins %>% 
+penguins |>  
   arrange(bill_length_mm)
 
 # We can also arrange in descending order using desc().
 
-penguins %>% 
+penguins |>  
   arrange(desc(bill_length_mm))
 
 # We often use arrange() at the end of pipelines to display things in order.
 
 penguins |> 
-  group_by(island) |> 
-  summarize(number_of_penguins = n()) |> 
-  arrange(number_of_penguins)
+  group_by(island, year) |> 
+  summarize(mean_bill_length = mean(bill_length_mm, na.rm = TRUE)) |> 
+  arrange(mean_bill_length)
 
 # Create a New Data Frame -------------------------------------------------
 
 # Running pipelines simply displays the result
+
+penguins |> 
+  group_by(island, year) |> 
+  summarize(mean_bill_length = mean(bill_length_mm, na.rm = TRUE)) |> 
+  arrange(mean_bill_length)
+
 # If we want to save the result, we need to use the assignment operator
 
 # Most people use the left-hand assignment operator as follows:
 
-penguins_by_island_v1 <- penguins |> 
-  group_by(island) |> 
-  summarize(number_of_penguins = n()) |> 
-  arrange(number_of_penguins)
+penguin_weight_by_island <- penguins |> 
+  group_by(island, year) |> 
+  summarize(mean_bill_length = mean(bill_length_mm, na.rm = TRUE)) |> 
+  arrange(mean_bill_length)
 
 # You can also use the right-hand assignment operator as follows:
 
 penguins |> 
-  group_by(island) |> 
-  summarize(number_of_penguins = n()) |> 
-  arrange(number_of_penguins) -> penguins_by_island_v2
+  group_by(island, year) |> 
+  summarize(mean_bill_length = mean(bill_length_mm, na.rm = TRUE)) |> 
+  arrange(mean_bill_length) -> penguin_weight_by_island_v2
 
 
 

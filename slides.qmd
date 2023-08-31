@@ -253,6 +253,16 @@ data_frame |>
   mutate(new_variable = variable + 1)
 ```
 
+## `mutate()`
+
+```{r}
+#| eval: false
+penguins |> 
+  mutate(weight_bill_ratio = 
+           body_mass_g / bill_length_mm) 
+```
+
+
 # `filter()` {.inverse}
 
 ## `filter()`
@@ -263,7 +273,7 @@ data_frame |>
   filter(variable > 1)
 ```
 
-## Comparisons
+## Comparison Operators
 
 ```{r}
 #| echo: false
@@ -327,7 +337,8 @@ Mention American and British spellings
 ```{r}
 #| eval: false
 data_frame |> 
-  summarize(summary_variable = summary_function(variable))
+  summarize(summary_variable = 
+              summary_function(variable))
 ```
 
 
@@ -382,7 +393,16 @@ data_frame |>
 
 # Create a New Data Frame {.inverse}
 
-## Create a New Data Frame
+## This Does Not Create a New Data Frame
+
+```{r}
+#| eval: false
+data_frame |> 
+  filter(variable > 1) |> 
+  arrange(variable)
+```
+
+## This Creates a New Data Frame
 
 ```{r}
 #| eval: false

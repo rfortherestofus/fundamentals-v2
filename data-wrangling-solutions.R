@@ -159,3 +159,16 @@ penguins |>
   group_by(sex) |> 
   summarize(avg_body_mass = mean(body_mass_g)) |> 
   arrange(desc(avg_body_mass))
+
+
+# Create a new data frame -------------------------------------------------
+
+# Take the pipeline that you just created and copy it below
+# Then assign the result of the pipeline to an object called penguin_body_mass_by_sex
+
+penguin_body_mass_by_sex <- penguins |> 
+  filter(island == "Biscoe") |> 
+  drop_na(body_mass_g, sex) |> 
+  group_by(sex) |> 
+  summarize(avg_body_mass = mean(body_mass_g)) |> 
+  arrange(desc(avg_body_mass))
