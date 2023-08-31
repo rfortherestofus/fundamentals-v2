@@ -247,6 +247,26 @@ data_frame |>
   select(variable)
 ```
 
+
+## Keyboard Shortcut to Run Code
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Mac**
+
+Command + Enter
+:::
+
+::: {.column width="50%"}
+**Windows**
+
+Control + Enter
+:::
+
+::::
+
+
 # `mutate()` {.inverse}
 
 ## `mutate()`
