@@ -112,27 +112,31 @@ rru_table <- function(df) {
 
 ```{r}
 #| output: true
-table(penguins$island,
-      penguins$sex)
+#| eval: false
+#| 
+mean(data$satisfaction_rating[data$year==2019])
 ```
-
 
 - Starts with function, data frame in parentheses
 
-- Uses dollar sign notation (data_frame$variable)
+- Uses dollar sign (`data$satisfaction_rating`) notation
+
+- Uses bracket (`[data$year==2019]`) notation
 
 - Repeats data frame name each time you call it
-
-
 
 ## Tidyverse Code
 
 ```{r}
 #| output: true
+#| eval: false
 
-penguins |> 
-  tabyl(island, sex)
+data |> 
+  filter(year == 2019) |> 
+  summarize(mean_satisfaction = mean(satisfaction_rating))
 ```
+
+- Nicely named functions because "the bottleneck in most data analysis is thinking time" - [The tidy tools manifesto](https://tidyverse.tidyverse.org/articles/manifesto.html)
 
 - "Data frame first, data frame once" - [Alison Hill](https://ohsu-conj620.netlify.app/slides/cm012.html#20)
 

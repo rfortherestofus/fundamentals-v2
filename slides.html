@@ -462,35 +462,24 @@
 <section id="base-r-code" class="slide level2 center">
 <h2>Base R Code</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">table</span>(penguins<span class="sc">$</span>island,</span>
-<span id="cb1-2"><a href="#cb1-2"></a>      penguins<span class="sc">$</span>sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>           
-            female male
-  Biscoe        80   83
-  Dream         61   62
-  Torgersen     24   23</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">mean</span>(data<span class="sc">$</span>satisfaction_rating[data<span class="sc">$</span>year<span class="sc">==</span><span class="dv">2019</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li class="fragment"><p>Starts with function, data frame in parentheses</p></li>
-<li class="fragment"><p>Uses dollar sign notation (data_frame$variable)</p></li>
+<li class="fragment"><p>Uses dollar sign (<code>data$satisfaction_rating</code>) notation</p></li>
+<li class="fragment"><p>Uses bracket (<code>[data$year==2019]</code>) notation</p></li>
 <li class="fragment"><p>Repeats data frame name each time you call it</p></li>
 </ul>
 </section>
 <section id="tidyverse-code" class="slide level2 center">
 <h2>Tidyverse Code</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">tabyl</span>(island, sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>    island female male NA_
-    Biscoe     80   83   5
-     Dream     61   62   1
- Torgersen     24   23   5</code></pre>
-</div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>data <span class="sc">|&gt;</span> </span>
+<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2019</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">summarize</span>(<span class="at">mean_satisfaction =</span> <span class="fu">mean</span>(satisfaction_rating))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
+<li class="fragment"><p>Nicely named functions because “the bottleneck in most data analysis is thinking time” - <a href="https://tidyverse.tidyverse.org/articles/manifesto.html">The tidy tools manifesto</a></p></li>
 <li class="fragment"><p>“Data frame first, data frame once” - <a href="https://ohsu-conj620.netlify.app/slides/cm012.html#20">Alison Hill</a></p></li>
 <li class="fragment"><p>Uses the pipe (<code>|&gt;</code>) to chain together a series of functions</p></li>
 </ul>
@@ -503,18 +492,18 @@
 <section id="code-without-pipes" class="slide level2 center">
 <h2>Code Without Pipes</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">select</span>(</span>
-<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">mutate</span>(penguins, </span>
-<span id="cb5-3"><a href="#cb5-3"></a>         <span class="at">body_mass_lbs =</span> body_mass_g <span class="sc">/</span> <span class="fl">453.6</span>), </span>
-<span id="cb5-4"><a href="#cb5-4"></a>  body_mass_lbs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">select</span>(</span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">mutate</span>(penguins, </span>
+<span id="cb3-3"><a href="#cb3-3"></a>         <span class="at">body_mass_lbs =</span> body_mass_g <span class="sc">/</span> <span class="fl">453.6</span>), </span>
+<span id="cb3-4"><a href="#cb3-4"></a>  body_mass_lbs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="code-with-pipes" class="slide level2 center">
 <h2>Code With Pipes</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">mutate</span>(<span class="at">body_mass_lbs =</span> body_mass_g <span class="sc">/</span> <span class="fl">453.6</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb6-3"><a href="#cb6-3"></a>  <span class="fu">select</span>(body_mass_lbs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">mutate</span>(<span class="at">body_mass_lbs =</span> body_mass_g <span class="sc">/</span> <span class="fl">453.6</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">select</span>(body_mass_lbs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="pipes-then" class="slide level2 center">
@@ -597,8 +586,8 @@ Tidyverse pipe
 <section id="select-1" class="slide level2 center">
 <h2><code>select()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>data_frame <span class="sc">|&gt;</span> </span>
-<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">select</span>(variable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>data_frame <span class="sc">|&gt;</span> </span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">select</span>(variable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section>
@@ -609,16 +598,16 @@ Tidyverse pipe
 <section id="mutate-1" class="slide level2 center">
 <h2><code>mutate()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>data_frame <span class="sc">|&gt;</span> </span>
-<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">mutate</span>(<span class="at">new_variable =</span> variable <span class="sc">+</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>data_frame <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">mutate</span>(<span class="at">new_variable =</span> variable <span class="sc">+</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="mutate-2" class="slide level2 center">
 <h2><code>mutate()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">mutate</span>(<span class="at">weight_bill_ratio =</span> </span>
-<span id="cb9-3"><a href="#cb9-3"></a>           body_mass_g <span class="sc">/</span> bill_length_mm) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">mutate</span>(<span class="at">weight_bill_ratio =</span> </span>
+<span id="cb7-3"><a href="#cb7-3"></a>           body_mass_g <span class="sc">/</span> bill_length_mm) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section>
@@ -629,8 +618,8 @@ Tidyverse pipe
 <section id="filter-1" class="slide level2 center">
 <h2><code>filter()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>data_frame <span class="sc">|&gt;</span> </span>
-<span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">filter</span>(variable <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>data_frame <span class="sc">|&gt;</span> </span>
+<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">filter</span>(variable <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="comparison-operators" class="slide level2 center">
@@ -638,25 +627,25 @@ Tidyverse pipe
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="isyfofghze" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="qwvirgvizp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#isyfofghze table {
+#qwvirgvizp table {
   font-family: Inter, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', Chivo;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#isyfofghze thead, #isyfofghze tbody, #isyfofghze tfoot, #isyfofghze tr, #isyfofghze td, #isyfofghze th {
+#qwvirgvizp thead, #qwvirgvizp tbody, #qwvirgvizp tfoot, #qwvirgvizp tr, #qwvirgvizp td, #qwvirgvizp th {
   border-style: none;
 }
 
-#isyfofghze p {
+#qwvirgvizp p {
   margin: 0;
   padding: 0;
 }
 
-#isyfofghze .gt_table {
+#qwvirgvizp .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -682,12 +671,12 @@ Tidyverse pipe
   border-left-color: #D3D3D3;
 }
 
-#isyfofghze .gt_caption {
+#qwvirgvizp .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#isyfofghze .gt_title {
+#qwvirgvizp .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -699,7 +688,7 @@ Tidyverse pipe
   border-bottom-width: 0;
 }
 
-#isyfofghze .gt_subtitle {
+#qwvirgvizp .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -711,7 +700,7 @@ Tidyverse pipe
   border-top-width: 0;
 }
 
-#isyfofghze .gt_heading {
+#qwvirgvizp .gt_heading {
   background-color: rgba(255, 255, 255, 0);
   text-align: left;
   border-bottom-color: rgba(255, 255, 255, 0);
@@ -723,13 +712,13 @@ Tidyverse pipe
   border-right-color: #D3D3D3;
 }
 
-#isyfofghze .gt_bottom_border {
+#qwvirgvizp .gt_bottom_border {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#isyfofghze .gt_col_headings {
+#qwvirgvizp .gt_col_headings {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -744,7 +733,7 @@ Tidyverse pipe
   border-right-color: #D3D3D3;
 }
 
-#isyfofghze .gt_col_heading {
+#qwvirgvizp .gt_col_heading {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   font-size: 80%;
@@ -764,7 +753,7 @@ Tidyverse pipe
   overflow-x: hidden;
 }
 
-#isyfofghze .gt_column_spanner_outer {
+#qwvirgvizp .gt_column_spanner_outer {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   font-size: 80%;
@@ -776,15 +765,15 @@ Tidyverse pipe
   padding-right: 4px;
 }
 
-#isyfofghze .gt_column_spanner_outer:first-child {
+#qwvirgvizp .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#isyfofghze .gt_column_spanner_outer:last-child {
+#qwvirgvizp .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#isyfofghze .gt_column_spanner {
+#qwvirgvizp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #404E6B;
@@ -796,11 +785,11 @@ Tidyverse pipe
   width: 100%;
 }
 
-#isyfofghze .gt_spanner_row {
+#qwvirgvizp .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#isyfofghze .gt_group_heading {
+#qwvirgvizp .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -826,7 +815,7 @@ Tidyverse pipe
   text-align: left;
 }
 
-#isyfofghze .gt_empty_group_heading {
+#qwvirgvizp .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
@@ -841,15 +830,15 @@ Tidyverse pipe
   vertical-align: middle;
 }
 
-#isyfofghze .gt_from_md > :first-child {
+#qwvirgvizp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#isyfofghze .gt_from_md > :last-child {
+#qwvirgvizp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#isyfofghze .gt_row {
+#qwvirgvizp .gt_row {
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 5px;
@@ -868,7 +857,7 @@ Tidyverse pipe
   overflow-x: hidden;
 }
 
-#isyfofghze .gt_stub {
+#qwvirgvizp .gt_stub {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   font-size: 80%;
@@ -881,7 +870,7 @@ Tidyverse pipe
   padding-right: 5px;
 }
 
-#isyfofghze .gt_stub_row_group {
+#qwvirgvizp .gt_stub_row_group {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   font-size: 100%;
@@ -895,15 +884,15 @@ Tidyverse pipe
   vertical-align: top;
 }
 
-#isyfofghze .gt_row_group_first td {
+#qwvirgvizp .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#isyfofghze .gt_row_group_first th {
+#qwvirgvizp .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#isyfofghze .gt_summary_row {
+#qwvirgvizp .gt_summary_row {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   text-transform: inherit;
@@ -913,16 +902,16 @@ Tidyverse pipe
   padding-right: 5px;
 }
 
-#isyfofghze .gt_first_summary_row {
+#qwvirgvizp .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#isyfofghze .gt_first_summary_row.thick {
+#qwvirgvizp .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#isyfofghze .gt_last_summary_row {
+#qwvirgvizp .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -932,7 +921,7 @@ Tidyverse pipe
   border-bottom-color: #D3D3D3;
 }
 
-#isyfofghze .gt_grand_summary_row {
+#qwvirgvizp .gt_grand_summary_row {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   text-transform: inherit;
@@ -942,7 +931,7 @@ Tidyverse pipe
   padding-right: 5px;
 }
 
-#isyfofghze .gt_first_grand_summary_row {
+#qwvirgvizp .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -952,7 +941,7 @@ Tidyverse pipe
   border-top-color: #D3D3D3;
 }
 
-#isyfofghze .gt_last_grand_summary_row_top {
+#qwvirgvizp .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -962,11 +951,11 @@ Tidyverse pipe
   border-bottom-color: #D3D3D3;
 }
 
-#isyfofghze .gt_striped {
+#qwvirgvizp .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#isyfofghze .gt_table_body {
+#qwvirgvizp .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -975,7 +964,7 @@ Tidyverse pipe
   border-bottom-color: #D3D3D3;
 }
 
-#isyfofghze .gt_footnotes {
+#qwvirgvizp .gt_footnotes {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   border-bottom-style: none;
@@ -989,7 +978,7 @@ Tidyverse pipe
   border-right-color: #D3D3D3;
 }
 
-#isyfofghze .gt_footnote {
+#qwvirgvizp .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -998,7 +987,7 @@ Tidyverse pipe
   padding-right: 5px;
 }
 
-#isyfofghze .gt_sourcenotes {
+#qwvirgvizp .gt_sourcenotes {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   border-bottom-style: none;
@@ -1012,7 +1001,7 @@ Tidyverse pipe
   border-right-color: #D3D3D3;
 }
 
-#isyfofghze .gt_sourcenote {
+#qwvirgvizp .gt_sourcenote {
   font-size: 12px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1020,63 +1009,63 @@ Tidyverse pipe
   padding-right: 5px;
 }
 
-#isyfofghze .gt_left {
+#qwvirgvizp .gt_left {
   text-align: left;
 }
 
-#isyfofghze .gt_center {
+#qwvirgvizp .gt_center {
   text-align: center;
 }
 
-#isyfofghze .gt_right {
+#qwvirgvizp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#isyfofghze .gt_font_normal {
+#qwvirgvizp .gt_font_normal {
   font-weight: normal;
 }
 
-#isyfofghze .gt_font_bold {
+#qwvirgvizp .gt_font_bold {
   font-weight: bold;
 }
 
-#isyfofghze .gt_font_italic {
+#qwvirgvizp .gt_font_italic {
   font-style: italic;
 }
 
-#isyfofghze .gt_super {
+#qwvirgvizp .gt_super {
   font-size: 65%;
 }
 
-#isyfofghze .gt_footnote_marks {
+#qwvirgvizp .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#isyfofghze .gt_asterisk {
+#qwvirgvizp .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#isyfofghze .gt_indent_1 {
+#qwvirgvizp .gt_indent_1 {
   text-indent: 5px;
 }
 
-#isyfofghze .gt_indent_2 {
+#qwvirgvizp .gt_indent_2 {
   text-indent: 10px;
 }
 
-#isyfofghze .gt_indent_3 {
+#qwvirgvizp .gt_indent_3 {
   text-indent: 15px;
 }
 
-#isyfofghze .gt_indent_4 {
+#qwvirgvizp .gt_indent_4 {
   text-indent: 20px;
 }
 
-#isyfofghze .gt_indent_5 {
+#qwvirgvizp .gt_indent_5 {
   text-indent: 25px;
 }
 
@@ -1149,25 +1138,25 @@ tbody tr:last-child {
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="rpvoskanka" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="waaysugasc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#rpvoskanka table {
+#waaysugasc table {
   font-family: Inter, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', Chivo;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rpvoskanka thead, #rpvoskanka tbody, #rpvoskanka tfoot, #rpvoskanka tr, #rpvoskanka td, #rpvoskanka th {
+#waaysugasc thead, #waaysugasc tbody, #waaysugasc tfoot, #waaysugasc tr, #waaysugasc td, #waaysugasc th {
   border-style: none;
 }
 
-#rpvoskanka p {
+#waaysugasc p {
   margin: 0;
   padding: 0;
 }
 
-#rpvoskanka .gt_table {
+#waaysugasc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1193,12 +1182,12 @@ tbody tr:last-child {
   border-left-color: #D3D3D3;
 }
 
-#rpvoskanka .gt_caption {
+#waaysugasc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rpvoskanka .gt_title {
+#waaysugasc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1210,7 +1199,7 @@ tbody tr:last-child {
   border-bottom-width: 0;
 }
 
-#rpvoskanka .gt_subtitle {
+#waaysugasc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1222,7 +1211,7 @@ tbody tr:last-child {
   border-top-width: 0;
 }
 
-#rpvoskanka .gt_heading {
+#waaysugasc .gt_heading {
   background-color: rgba(255, 255, 255, 0);
   text-align: left;
   border-bottom-color: rgba(255, 255, 255, 0);
@@ -1234,13 +1223,13 @@ tbody tr:last-child {
   border-right-color: #D3D3D3;
 }
 
-#rpvoskanka .gt_bottom_border {
+#waaysugasc .gt_bottom_border {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rpvoskanka .gt_col_headings {
+#waaysugasc .gt_col_headings {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1255,7 +1244,7 @@ tbody tr:last-child {
   border-right-color: #D3D3D3;
 }
 
-#rpvoskanka .gt_col_heading {
+#waaysugasc .gt_col_heading {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   font-size: 80%;
@@ -1275,7 +1264,7 @@ tbody tr:last-child {
   overflow-x: hidden;
 }
 
-#rpvoskanka .gt_column_spanner_outer {
+#waaysugasc .gt_column_spanner_outer {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   font-size: 80%;
@@ -1287,15 +1276,15 @@ tbody tr:last-child {
   padding-right: 4px;
 }
 
-#rpvoskanka .gt_column_spanner_outer:first-child {
+#waaysugasc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rpvoskanka .gt_column_spanner_outer:last-child {
+#waaysugasc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rpvoskanka .gt_column_spanner {
+#waaysugasc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #404E6B;
@@ -1307,11 +1296,11 @@ tbody tr:last-child {
   width: 100%;
 }
 
-#rpvoskanka .gt_spanner_row {
+#waaysugasc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rpvoskanka .gt_group_heading {
+#waaysugasc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1337,7 +1326,7 @@ tbody tr:last-child {
   text-align: left;
 }
 
-#rpvoskanka .gt_empty_group_heading {
+#waaysugasc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
@@ -1352,15 +1341,15 @@ tbody tr:last-child {
   vertical-align: middle;
 }
 
-#rpvoskanka .gt_from_md > :first-child {
+#waaysugasc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rpvoskanka .gt_from_md > :last-child {
+#waaysugasc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rpvoskanka .gt_row {
+#waaysugasc .gt_row {
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 5px;
@@ -1379,7 +1368,7 @@ tbody tr:last-child {
   overflow-x: hidden;
 }
 
-#rpvoskanka .gt_stub {
+#waaysugasc .gt_stub {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   font-size: 80%;
@@ -1392,7 +1381,7 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#rpvoskanka .gt_stub_row_group {
+#waaysugasc .gt_stub_row_group {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   font-size: 100%;
@@ -1406,15 +1395,15 @@ tbody tr:last-child {
   vertical-align: top;
 }
 
-#rpvoskanka .gt_row_group_first td {
+#waaysugasc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rpvoskanka .gt_row_group_first th {
+#waaysugasc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rpvoskanka .gt_summary_row {
+#waaysugasc .gt_summary_row {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   text-transform: inherit;
@@ -1424,16 +1413,16 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#rpvoskanka .gt_first_summary_row {
+#waaysugasc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rpvoskanka .gt_first_summary_row.thick {
+#waaysugasc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rpvoskanka .gt_last_summary_row {
+#waaysugasc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1443,7 +1432,7 @@ tbody tr:last-child {
   border-bottom-color: #D3D3D3;
 }
 
-#rpvoskanka .gt_grand_summary_row {
+#waaysugasc .gt_grand_summary_row {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   text-transform: inherit;
@@ -1453,7 +1442,7 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#rpvoskanka .gt_first_grand_summary_row {
+#waaysugasc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1463,7 +1452,7 @@ tbody tr:last-child {
   border-top-color: #D3D3D3;
 }
 
-#rpvoskanka .gt_last_grand_summary_row_top {
+#waaysugasc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1473,11 +1462,11 @@ tbody tr:last-child {
   border-bottom-color: #D3D3D3;
 }
 
-#rpvoskanka .gt_striped {
+#waaysugasc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rpvoskanka .gt_table_body {
+#waaysugasc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1486,7 +1475,7 @@ tbody tr:last-child {
   border-bottom-color: #D3D3D3;
 }
 
-#rpvoskanka .gt_footnotes {
+#waaysugasc .gt_footnotes {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   border-bottom-style: none;
@@ -1500,7 +1489,7 @@ tbody tr:last-child {
   border-right-color: #D3D3D3;
 }
 
-#rpvoskanka .gt_footnote {
+#waaysugasc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1509,7 +1498,7 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#rpvoskanka .gt_sourcenotes {
+#waaysugasc .gt_sourcenotes {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   border-bottom-style: none;
@@ -1523,7 +1512,7 @@ tbody tr:last-child {
   border-right-color: #D3D3D3;
 }
 
-#rpvoskanka .gt_sourcenote {
+#waaysugasc .gt_sourcenote {
   font-size: 12px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1531,63 +1520,63 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#rpvoskanka .gt_left {
+#waaysugasc .gt_left {
   text-align: left;
 }
 
-#rpvoskanka .gt_center {
+#waaysugasc .gt_center {
   text-align: center;
 }
 
-#rpvoskanka .gt_right {
+#waaysugasc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rpvoskanka .gt_font_normal {
+#waaysugasc .gt_font_normal {
   font-weight: normal;
 }
 
-#rpvoskanka .gt_font_bold {
+#waaysugasc .gt_font_bold {
   font-weight: bold;
 }
 
-#rpvoskanka .gt_font_italic {
+#waaysugasc .gt_font_italic {
   font-style: italic;
 }
 
-#rpvoskanka .gt_super {
+#waaysugasc .gt_super {
   font-size: 65%;
 }
 
-#rpvoskanka .gt_footnote_marks {
+#waaysugasc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rpvoskanka .gt_asterisk {
+#waaysugasc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rpvoskanka .gt_indent_1 {
+#waaysugasc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rpvoskanka .gt_indent_2 {
+#waaysugasc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rpvoskanka .gt_indent_3 {
+#waaysugasc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rpvoskanka .gt_indent_4 {
+#waaysugasc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rpvoskanka .gt_indent_5 {
+#waaysugasc .gt_indent_5 {
   text-indent: 25px;
 }
 
@@ -1625,8 +1614,8 @@ tbody tr:last-child {
 <section id="logical-operators-1" class="slide level2 center">
 <h2>Logical Operators</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>data_frame <span class="sc">|&gt;</span> </span>
-<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">filter</span>(variable <span class="sc">&gt;</span> <span class="dv">1</span> <span class="sc">&amp;</span> variable_2 <span class="sc">&lt;</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>data_frame <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">filter</span>(variable <span class="sc">&gt;</span> <span class="dv">1</span> <span class="sc">&amp;</span> variable_2 <span class="sc">&lt;</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes">
 <ul>
@@ -1664,9 +1653,9 @@ tbody tr:last-child {
 <section id="summarize-1" class="slide level2 center">
 <h2><code>summarize()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>data_frame <span class="sc">|&gt;</span> </span>
-<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">summarize</span>(<span class="at">summary_variable =</span> </span>
-<span id="cb12-3"><a href="#cb12-3"></a>              <span class="fu">summary_function</span>(variable))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>data_frame <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">summarize</span>(<span class="at">summary_variable =</span> </span>
+<span id="cb10-3"><a href="#cb10-3"></a>              <span class="fu">summary_function</span>(variable))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="summary-functions" class="slide level2 center">
@@ -1674,25 +1663,25 @@ tbody tr:last-child {
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="gasbdraitr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="czmqghqmch" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#gasbdraitr table {
+#czmqghqmch table {
   font-family: Inter, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', Chivo;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#gasbdraitr thead, #gasbdraitr tbody, #gasbdraitr tfoot, #gasbdraitr tr, #gasbdraitr td, #gasbdraitr th {
+#czmqghqmch thead, #czmqghqmch tbody, #czmqghqmch tfoot, #czmqghqmch tr, #czmqghqmch td, #czmqghqmch th {
   border-style: none;
 }
 
-#gasbdraitr p {
+#czmqghqmch p {
   margin: 0;
   padding: 0;
 }
 
-#gasbdraitr .gt_table {
+#czmqghqmch .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1718,12 +1707,12 @@ tbody tr:last-child {
   border-left-color: #D3D3D3;
 }
 
-#gasbdraitr .gt_caption {
+#czmqghqmch .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#gasbdraitr .gt_title {
+#czmqghqmch .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1735,7 +1724,7 @@ tbody tr:last-child {
   border-bottom-width: 0;
 }
 
-#gasbdraitr .gt_subtitle {
+#czmqghqmch .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1747,7 +1736,7 @@ tbody tr:last-child {
   border-top-width: 0;
 }
 
-#gasbdraitr .gt_heading {
+#czmqghqmch .gt_heading {
   background-color: rgba(255, 255, 255, 0);
   text-align: left;
   border-bottom-color: rgba(255, 255, 255, 0);
@@ -1759,13 +1748,13 @@ tbody tr:last-child {
   border-right-color: #D3D3D3;
 }
 
-#gasbdraitr .gt_bottom_border {
+#czmqghqmch .gt_bottom_border {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#gasbdraitr .gt_col_headings {
+#czmqghqmch .gt_col_headings {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1780,7 +1769,7 @@ tbody tr:last-child {
   border-right-color: #D3D3D3;
 }
 
-#gasbdraitr .gt_col_heading {
+#czmqghqmch .gt_col_heading {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   font-size: 80%;
@@ -1800,7 +1789,7 @@ tbody tr:last-child {
   overflow-x: hidden;
 }
 
-#gasbdraitr .gt_column_spanner_outer {
+#czmqghqmch .gt_column_spanner_outer {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   font-size: 80%;
@@ -1812,15 +1801,15 @@ tbody tr:last-child {
   padding-right: 4px;
 }
 
-#gasbdraitr .gt_column_spanner_outer:first-child {
+#czmqghqmch .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gasbdraitr .gt_column_spanner_outer:last-child {
+#czmqghqmch .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gasbdraitr .gt_column_spanner {
+#czmqghqmch .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #404E6B;
@@ -1832,11 +1821,11 @@ tbody tr:last-child {
   width: 100%;
 }
 
-#gasbdraitr .gt_spanner_row {
+#czmqghqmch .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#gasbdraitr .gt_group_heading {
+#czmqghqmch .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1862,7 +1851,7 @@ tbody tr:last-child {
   text-align: left;
 }
 
-#gasbdraitr .gt_empty_group_heading {
+#czmqghqmch .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
@@ -1877,15 +1866,15 @@ tbody tr:last-child {
   vertical-align: middle;
 }
 
-#gasbdraitr .gt_from_md > :first-child {
+#czmqghqmch .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gasbdraitr .gt_from_md > :last-child {
+#czmqghqmch .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gasbdraitr .gt_row {
+#czmqghqmch .gt_row {
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 5px;
@@ -1904,7 +1893,7 @@ tbody tr:last-child {
   overflow-x: hidden;
 }
 
-#gasbdraitr .gt_stub {
+#czmqghqmch .gt_stub {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   font-size: 80%;
@@ -1917,7 +1906,7 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#gasbdraitr .gt_stub_row_group {
+#czmqghqmch .gt_stub_row_group {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   font-size: 100%;
@@ -1931,15 +1920,15 @@ tbody tr:last-child {
   vertical-align: top;
 }
 
-#gasbdraitr .gt_row_group_first td {
+#czmqghqmch .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gasbdraitr .gt_row_group_first th {
+#czmqghqmch .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#gasbdraitr .gt_summary_row {
+#czmqghqmch .gt_summary_row {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   text-transform: inherit;
@@ -1949,16 +1938,16 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#gasbdraitr .gt_first_summary_row {
+#czmqghqmch .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#gasbdraitr .gt_first_summary_row.thick {
+#czmqghqmch .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gasbdraitr .gt_last_summary_row {
+#czmqghqmch .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1968,7 +1957,7 @@ tbody tr:last-child {
   border-bottom-color: #D3D3D3;
 }
 
-#gasbdraitr .gt_grand_summary_row {
+#czmqghqmch .gt_grand_summary_row {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   text-transform: inherit;
@@ -1978,7 +1967,7 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#gasbdraitr .gt_first_grand_summary_row {
+#czmqghqmch .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1988,7 +1977,7 @@ tbody tr:last-child {
   border-top-color: #D3D3D3;
 }
 
-#gasbdraitr .gt_last_grand_summary_row_top {
+#czmqghqmch .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1998,11 +1987,11 @@ tbody tr:last-child {
   border-bottom-color: #D3D3D3;
 }
 
-#gasbdraitr .gt_striped {
+#czmqghqmch .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gasbdraitr .gt_table_body {
+#czmqghqmch .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2011,7 +2000,7 @@ tbody tr:last-child {
   border-bottom-color: #D3D3D3;
 }
 
-#gasbdraitr .gt_footnotes {
+#czmqghqmch .gt_footnotes {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   border-bottom-style: none;
@@ -2025,7 +2014,7 @@ tbody tr:last-child {
   border-right-color: #D3D3D3;
 }
 
-#gasbdraitr .gt_footnote {
+#czmqghqmch .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2034,7 +2023,7 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#gasbdraitr .gt_sourcenotes {
+#czmqghqmch .gt_sourcenotes {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   border-bottom-style: none;
@@ -2048,7 +2037,7 @@ tbody tr:last-child {
   border-right-color: #D3D3D3;
 }
 
-#gasbdraitr .gt_sourcenote {
+#czmqghqmch .gt_sourcenote {
   font-size: 12px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2056,63 +2045,63 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#gasbdraitr .gt_left {
+#czmqghqmch .gt_left {
   text-align: left;
 }
 
-#gasbdraitr .gt_center {
+#czmqghqmch .gt_center {
   text-align: center;
 }
 
-#gasbdraitr .gt_right {
+#czmqghqmch .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gasbdraitr .gt_font_normal {
+#czmqghqmch .gt_font_normal {
   font-weight: normal;
 }
 
-#gasbdraitr .gt_font_bold {
+#czmqghqmch .gt_font_bold {
   font-weight: bold;
 }
 
-#gasbdraitr .gt_font_italic {
+#czmqghqmch .gt_font_italic {
   font-style: italic;
 }
 
-#gasbdraitr .gt_super {
+#czmqghqmch .gt_super {
   font-size: 65%;
 }
 
-#gasbdraitr .gt_footnote_marks {
+#czmqghqmch .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#gasbdraitr .gt_asterisk {
+#czmqghqmch .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gasbdraitr .gt_indent_1 {
+#czmqghqmch .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gasbdraitr .gt_indent_2 {
+#czmqghqmch .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gasbdraitr .gt_indent_3 {
+#czmqghqmch .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gasbdraitr .gt_indent_4 {
+#czmqghqmch .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gasbdraitr .gt_indent_5 {
+#czmqghqmch .gt_indent_5 {
   text-indent: 25px;
 }
 
@@ -2163,9 +2152,9 @@ tbody tr:last-child {
 <section id="group_by-and-summarize-1" class="slide level2 center">
 <h2><code>group_by()</code> and <code>summarize()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>data_frame <span class="sc">|&gt;</span> </span>
-<span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">group_by</span>(grouping_variable) <span class="sc">|&gt;</span> </span>
-<span id="cb13-3"><a href="#cb13-3"></a>  <span class="fu">summarize</span>(<span class="at">summary_variable =</span> <span class="fu">summary_function</span>(variable))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>data_frame <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">group_by</span>(grouping_variable) <span class="sc">|&gt;</span> </span>
+<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">summarize</span>(<span class="at">summary_variable =</span> <span class="fu">summary_function</span>(variable))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes">
 <ul>
@@ -2191,8 +2180,8 @@ tbody tr:last-child {
 <section id="arrange-1" class="slide level2 center">
 <h2><code>arrange()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>data_frame <span class="sc">|&gt;</span> </span>
-<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">arrange</span>(variable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>data_frame <span class="sc">|&gt;</span> </span>
+<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">arrange</span>(variable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section>
@@ -2203,17 +2192,17 @@ tbody tr:last-child {
 <section id="this-does-not-create-a-new-data-frame" class="slide level2 center">
 <h2>This Does Not Create a New Data Frame</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>data_frame <span class="sc">|&gt;</span> </span>
-<span id="cb15-2"><a href="#cb15-2"></a>  <span class="fu">filter</span>(variable <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb15-3"><a href="#cb15-3"></a>  <span class="fu">arrange</span>(variable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>data_frame <span class="sc">|&gt;</span> </span>
+<span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">filter</span>(variable <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb13-3"><a href="#cb13-3"></a>  <span class="fu">arrange</span>(variable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="this-creates-a-new-data-frame" class="slide level2 center">
 <h2>This Creates a New Data Frame</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a>data_frame_2 <span class="ot">&lt;-</span> data_frame <span class="sc">|&gt;</span> </span>
-<span id="cb16-2"><a href="#cb16-2"></a>  <span class="fu">filter</span>(variable <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb16-3"><a href="#cb16-3"></a>  <span class="fu">arrange</span>(variable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>data_frame_2 <span class="ot">&lt;-</span> data_frame <span class="sc">|&gt;</span> </span>
+<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">filter</span>(variable <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb14-3"><a href="#cb14-3"></a>  <span class="fu">arrange</span>(variable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes">
 <ul>
