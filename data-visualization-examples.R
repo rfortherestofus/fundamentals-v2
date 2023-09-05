@@ -591,6 +591,7 @@ ggsave(filename = "plots/penguins-plot.png",
        height = 8,
        width = 11,
        units = "in",
+       bg = "white"
        dpi = 300)
 
 # We can save our plot to other formats as well. 
