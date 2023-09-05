@@ -447,3 +447,79 @@ data_frame_2 <- data_frame |>
 ::: {.notes}
 - Use [R Community Survey](https://github.com/rstudio/r-community-survey)
 :::
+
+# An Important Workflow Tip {.inverse}
+
+# The Grammar of Graphics {.inverse}
+
+## The Grammar of Graphics
+
+![](assets/nyt-inequality-chart.png)
+
+::: {.notes}
+https://www.nytimes.com/2017/12/17/opinion/taxes-inequality-charts.html
+:::
+
+## The Grammar of Graphics
+
+![](assets/grammar-of-graphics.png)
+
+---
+
+### Data Mapped to Aesthetic Properties ...
+
+:::: {.columns}
+
+::: {.column width="40%"}
+![](assets/data-with-col-labels.png)
+:::
+
+::: {.column width="60%"}
+![](assets/nyt-inequality-chart.png)
+:::
+
+::::
+
+
+
+---
+
+### ... of Geometric Objects
+
+:::: {.columns}
+
+::: {.column width="60%"}
+![](assets/nyt-inequality-chart.png)
+:::
+
+::: {.column width="40%"}
+<br>
+![](assets/geometric-objects.png)
+:::
+
+::::
+
+# `ggplot2` {.inverse}
+
+---
+
+::: {.center-slide}
+[![](assets/ggplot-qz.png){width=650}](https://qz.com/1007328/all-hail-ggplot2-the-code-powering-all-those-excellent-charts-is-10-years-old)
+:::
+
+---
+
+
+![](assets/nyt-inequality-chart.png){height=400px}
+
+```{r}
+#| eval: false
+
+ggplot(data = inequality_data,
+       mapping = aes(x = year,
+                     y = income_change,
+                     color = income_group)) +
+  geom_line()
+```
+
+
