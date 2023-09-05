@@ -247,7 +247,7 @@ penguin_weight_by_species_and_sex <- penguins |>
   summarize(mean_weight = mean(body_mass_g))
 
 # Now see if you can recreate this plot:
-# https://github.com/rfortherestofus/fundamentals-v2/blob/main/plots/penguins-by-weight-species.pdf
+# https://raw.githubusercontent.com/rfortherestofus/fundamentals-v2/main/plots/penguins-by-weight-species.png
 # You'll need to adjust the theme, add plot labels, and use facetting.
 
 ggplot(data = penguin_weight_by_species_and_sex,
