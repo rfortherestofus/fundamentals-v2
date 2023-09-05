@@ -345,8 +345,7 @@ ggplot(data = penguin_bill_length_by_island_v2,
 penguin_bill_length_by_island_and_sex <- penguins |> 
   drop_na(sex) |> 
   group_by(island, sex) |> 
-  summarize(mean_bill_length = mean(bill_length_mm)) |> 
-  arrange(mean_bill_length)
+  summarize(mean_bill_length = mean(bill_length_mm))
 
 # Now let's plot this data frame using a bar chart.
 
@@ -603,3 +602,24 @@ ggsave(filename = "plots/penguins-plot.pdf",
        width = 11,
        units = "in")
 
+# You can also save a plot and then use that within ggsave()
+
+penguins_plot <- ggplot(data = penguin_bill_length_by_island_and_sex,
+       mapping = aes(x = island,
+                     y = mean_bill_length,
+                     fill = sex)) +
+  geom_col(position = "dodge") +
+  labs(title = "Males have longer bills than females",
+       subtitle = "But they're all good penguins",
+       caption = "Data from the palmerpenguins R package",
+       x = NULL,
+       y = "Mean Bill Length in Millimeters",
+       fill = NULL) +
+  theme_economist() +
+  facet_grid(cols = vars(sex))
+
+ggsave(plot = penguins_plot,
+       filename = "plots/penguins-plot-2.pdf",
+       height = 8,
+       width = 11,
+       units = "in")
