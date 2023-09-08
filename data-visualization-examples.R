@@ -27,7 +27,8 @@ ggplot(data = penguins,
 # It's using the default statistical transformation for geom_histogram, 
 # which is stat = "bin".
 
-# If we add stat = "bin" we get the same thing. Each geom has a default stat.
+# If we add stat = "bin" we get the same thing. 
+# Each geom has a default stat.
 
 ggplot(data = penguins,
        mapping = aes(x = bill_length_mm)) +
@@ -42,7 +43,8 @@ ggplot(data = penguins,
 
 # Bar Charts --------------------------------------------------------------
 
-# There are two basic approaches to making bar charts, both of which use geom_bar().
+# There are two basic approaches to making bar charts, 
+# both of which use geom_bar().
 
 # Approach #1
 
@@ -65,11 +67,13 @@ ggplot(data = penguins,
 
 # Approach #2
 
-# Wrangle your data frame before plotting, possibly creating a new data frame in the process
+# Wrangle your data frame before plotting, creating a new data frame 
+# in the process
 # Assign variables to the x and y axes
 # Use stat = "identity" to tell ggplot to use the data exactly as it is
 
-# It's often easier to do our analysis work, save a data frame, and then use this to plot.
+# It's often easier to do our analysis work, save a data frame, 
+# and then use this to plot.
 # Let's recreate our penguin_bill_length_by_island data frame.
 
 penguin_bill_length_by_island <- penguins |> 
@@ -89,17 +93,17 @@ ggplot(data = penguin_bill_length_by_island,
 # We can also flip the x and y axes. 
 
 ggplot(data = penguin_bill_length_by_island,
-       mapping = aes(x = island,
-                     y = mean_bill_length)) +
-  geom_bar(stat = "identity") +
-  coord_flip()
+       mapping = aes(x = mean_bill_length,
+                     y = island)) +
+  geom_bar(stat = "identity") 
 
 # The function coord_flip() will do the same thing.
 
 ggplot(data = penguin_bill_length_by_island,
-       mapping = aes(x = mean_bill_length,
-                     y = island)) +
-  geom_bar(stat = "identity")
+       mapping = aes(x = island,
+                     y = mean_bill_length)) +
+  geom_bar(stat = "identity") +
+  coord_
 
 # We can also use geom_col(), which is the same as geom_bar(stat = "identity")
 
@@ -139,7 +143,7 @@ ggplot(data = penguin_bill_length_by_island,
   geom_col()
 
 
-# Setting color and fill scales -------------------------------------------
+# Setting color and fill Scales -------------------------------------------
 
 # We can change the color or fill scale using a scale function.
 
@@ -179,7 +183,7 @@ ggplot(data = penguins,
                      y = bill_depth_mm,
                      color = island)) +
   geom_point() +
-  scale_color_viridis_d(option = "F")
+  scale_color_viridis_d(option = "H")
 
 # There are many other built-in palettes. Just type scale_color_ and RStudio
 # will autocomplete some other options for you.
@@ -196,11 +200,13 @@ ggplot(data = penguin_bill_length_by_island,
 # Setting x and y Scales --------------------------------------------------
 
 # Adjusting our x and y axes is similar. 
-# Remember that the x and y axes are considered an aesthetic properties in the same way color is.
+# Remember that the x and y axes are considered an aesthetic properties 
+# in the same way color and fill are.
 
 # We adjust our x and y axes using the scale_ set of functions. 
 # The exact function you use depends on your data. 
-# For example, you would use scale_y_continuous() if you have continuous data on the y axis.
+# For example, you would use scale_y_continuous() 
+# if you have continuous data on the y axis.
 
 # The limits argument sets the minimum and maximum values that display.
 
@@ -219,7 +225,7 @@ ggplot(data = penguin_bill_length_by_island,
                      fill = island)) +
   geom_col() +
   scale_y_continuous(limits = c(0, 50),
-                     breaks = c(0, 10, 20, 30, 40, 50))
+                     breaks = c(0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50))
 
 # If we want to change the x axis labels, we'd need to use 
 # the labels argument in scale_x_discrete() because that data is categorical. 
@@ -230,12 +236,12 @@ ggplot(data = penguin_bill_length_by_island,
                      fill = island)) +
   geom_col() +
   scale_y_continuous(limits = c(0, 50),
-                     breaks = c(0, 10, 20, 30, 40, 50)) +
+                     breaks = c(0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50)) +
   scale_x_discrete(labels = c("Biscoe Island", 
                               "Dream Island",
                               "Torgersen Island"))
 
-# Text and Labels ---------------------------------------------------------
+# Adding Text to Plots ---------------------------------------------------------
 
 # Text is just another geom. 
 # We can use geom_text() to add labels to our figures.
@@ -250,7 +256,8 @@ ggplot(data = penguin_bill_length_by_island,
 
 # Those text labels are too long!
 # Let's create a new variable to use for plotting.
-# We're using the number function from the scales package to make this variable
+# We're using the number() function from the scales package 
+# to make this variable
 
 library(scales)
 
@@ -269,7 +276,8 @@ ggplot(data = penguin_bill_length_by_island_v2,
 
 # Note that we use mean_bill_length_one_digit for the label aesthetic property
 # and mean_bill_length for y. 
-# If you use mean_bill_length_one_digit for both, your graph will look different.
+# If you use mean_bill_length_one_digit for both, your graph will
+# look different.
 
 ggplot(data = penguin_bill_length_by_island_v2,
        mapping = aes(x = island,
@@ -279,7 +287,8 @@ ggplot(data = penguin_bill_length_by_island_v2,
   geom_col() +
   geom_text()
 
-# We can use the hjust() and vjust() arguments to horizontally and vertically adjust text.
+# We can use the hjust and vjust arguments to horizontally and vertically 
+# adjust text.
 
 # vjust = 0 puts the labels on the outer edge of the bars.
 
@@ -312,7 +321,8 @@ ggplot(data = penguin_bill_length_by_island_v2,
   geom_text(vjust = 1.5)
 
 # We can adjust the color of the text using the color argument. 
-# We're putting it outside of the aes() because we are setting it for the whole layer.
+# We're putting it outside of the aes() because we are setting it 
+# for the whole layer.
 
 ggplot(data = penguin_bill_length_by_island_v2,
        mapping = aes(x = island,
@@ -334,8 +344,8 @@ ggplot(data = penguin_bill_length_by_island_v2,
                      label = mean_bill_length_one_digit)) +
   geom_col() +
   geom_label(vjust = 1.5,
-            color = "white",
-            fill = "black")
+             color = "white",
+             fill = "black")
 
 
 # Plot Labels -------------------------------------------------------------
@@ -356,7 +366,8 @@ ggplot(data = penguin_bill_length_by_island_and_sex,
   geom_col()
 
 # The bars are stacked by default. 
-# To put them side by side, we use the position = "dodge" argument within geom_col().
+# To put them side by side, we use the 
+# position = "dodge" argument within geom_col().
 
 ggplot(data = penguin_bill_length_by_island_and_sex,
        mapping = aes(x = island,
@@ -399,7 +410,8 @@ ggplot(data = penguin_bill_length_by_island_and_sex,
        x = "Island",
        y = "Mean Bill Length in Millimeters")
 
-# To change the legend title, we use the name of the aesthetic that is being shown.
+# To change the legend title, 
+# we use the name of the aesthetic that is being shown.
 
 ggplot(data = penguin_bill_length_by_island_and_sex,
        mapping = aes(x = island,
@@ -413,7 +425,7 @@ ggplot(data = penguin_bill_length_by_island_and_sex,
        y = "Mean Bill Length in Millimeters",
        fill = "Sex")
 
-# You can remove titles using NULL
+# You can remove plot labels using NULL
 
 ggplot(data = penguin_bill_length_by_island_and_sex,
        mapping = aes(x = island,
@@ -545,7 +557,8 @@ ggplot(data = penguin_bill_length_by_island_and_sex,
   facet_grid(rows = vars(sex))
 
 # We can use facetting for any type of figure. 
-# Here's our scatterplot from before with a theme and facetting by sex added 
+# Here's our scatterplot from before with a theme and 
+# facetting by sex added 
 
 ggplot(data = penguins,
        mapping = aes(x = bill_length_mm,
@@ -591,11 +604,12 @@ ggsave(filename = "plots/penguins-plot.png",
        height = 8,
        width = 11,
        units = "in",
-       bg = "white"
+       bg = "white",
        dpi = 300)
 
 # We can save our plot to other formats as well. 
-# PDF is a great option because it produces small file sizes and high-quality plots. 
+# PDF is a great option because it produces small file sizes 
+# and high-quality plots. 
 # You don't need to list dpi here as PDFs are vector based.
 
 ggsave(filename = "plots/penguins-plot.pdf",
@@ -618,6 +632,8 @@ penguins_plot <- ggplot(data = penguin_bill_length_by_island_and_sex,
        fill = NULL) +
   theme_economist() +
   facet_grid(cols = vars(sex))
+
+penguins_plot
 
 ggsave(plot = penguins_plot,
        filename = "plots/penguins-plot-2.pdf",

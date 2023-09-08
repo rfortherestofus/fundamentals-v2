@@ -78,7 +78,7 @@ ggplot(data = penguins,
                      color = island)) +
   geom_point()
 
-# Setting color and fill scales -------------------------------------------
+# Setting color and fill Scales -------------------------------------------
 
 # Take your scatterplot that you just made and add a scale using scale_color_manual(). 
 # You can find a list of all colors you can use here:
@@ -135,7 +135,7 @@ ggplot(data = penguins_by_species,
   scale_y_continuous(limits = c(0, 160),
                      breaks = c(0, 40, 80, 120, 160))
 
-# Text and Labels ---------------------------------------------------------
+# Adding Text to Plots ---------------------------------------------------------
 
 # Copy your last code chunk. 
 # Then add text labels on the top of each bar that show the number of penguins of each species.

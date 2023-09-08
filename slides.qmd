@@ -448,7 +448,9 @@ data_frame_2 <- data_frame |>
 - Use [R Community Survey](https://github.com/rstudio/r-community-survey)
 :::
 
-# An Important Workflow Tip {.inverse}
+# Data Visualization {.inverse}
+
+
 
 # The Grammar of Graphics {.inverse}
 
@@ -509,9 +511,6 @@ https://www.nytimes.com/2017/12/17/opinion/taxes-inequality-charts.html
 
 ---
 
-
-![](assets/nyt-inequality-chart.png){height=400px}
-
 ```{r}
 #| eval: false
 
@@ -522,4 +521,11 @@ ggplot(data = inequality_data,
   geom_line()
 ```
 
+![](assets/nyt-inequality-chart.png){height=400px}
 
+
+# An Important Workflow Tip {.inverse}
+
+## An Important Workflow Tip
+
+![](assets/important-workflow-tip.png)
