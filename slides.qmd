@@ -535,6 +535,8 @@ ggplot(data = inequality_data,
 
 ![](assets/non-r-workflow-back-to-square-one.svg){fig-align="center"}
 
+# Quarto is the Solution You Didn't Know You Needed {.inverse}
+
 ---
 
 ![](assets/word-source-output.png){fig-align="center"}
@@ -566,7 +568,7 @@ https://jthomasmock.github.io/quarto-in-two-hours/materials/01-intro-quarto.html
 
 1. Look through this Quarto file and make sure that you can identify the YAML, text sections, and code chunks.
 
-1. Click the Render button and open the file that gets produced (report.docx).
+1. Click the Render button and open the file that gets produced (`report.docx`).
 
 ## YAML {.inverse}
 
@@ -643,7 +645,7 @@ format: html
 
 1. Change the output format to HTML by changing `format: word` to `format: html`.
 
-1. Render again and open report.html to make sure your changes show up.
+1. Render again and open `report.html` to make sure your changes show up.
 
 
 ## Text {.inverse}

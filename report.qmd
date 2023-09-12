@@ -1,40 +1,26 @@
 ---
 title: "My Report"
 author: "David Keyes"
-format: html
+format: docx
 ---
 
-```{r}
-#| message: false
+## Quarto
 
-library(tidyverse)
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Running Code
+
+When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
+
+```{r}
+1 + 1
 ```
 
+You can add options to executable code like this 
+
 ```{r}
-#| warning: false
-
-library(tidyverse)
-
-# Import Data -------------------------------------------------------------
-
-penguins <- read_csv("penguins.csv")
-
-# Scatterplots ------------------------------------------------------------
-
-# We use geom_point() to make a scatterplot.
-
-ggplot(data = penguins,
-       mapping = aes(x = bill_length_mm,
-                     y = bill_depth_mm)) +
-  geom_point()
-
-# Histograms --------------------------------------------------------------
-
-# We use geom_histogram() to make a histogram.
-
-ggplot(data = penguins,
-       mapping = aes(x = bill_length_mm)) +
-  geom_histogram()
+#| echo: false
+2 * 2
 ```
 
-
+The `echo: false` option disables the printing of code (only output is displayed).
