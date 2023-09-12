@@ -527,15 +527,26 @@ ggplot(data = inequality_data,
 
 # Quarto {.inverse}
 
-## A New Way of Working
+---
 
-Explain problem of having to redo work
+![](assets/non-r-workflow.svg){fig-align="center"}
 
-## A New Way of Working
+---
 
-Source vs Output
+![](assets/non-r-workflow-back-to-square-one.svg){fig-align="center"}
 
+---
+
+![](assets/word-source-output.png){fig-align="center"}
+
+---
+
+![](assets/rstudio-source-output.png){fig-align="center"}
+
+::: {.notes}
 https://jthomasmock.github.io/quarto-in-two-hours/materials/01-intro-quarto.html#/change-your-mental-model
+:::
+
 
 ## Quarto Overview
 
@@ -839,8 +850,8 @@ warning: removing rows when making plots
 
 ## Code Chunk Options
 
-````{verbatim lang = "markdown"}
-```{r}
+````
+```{{r}}
 #| message: false
 
 library(tidyverse)
@@ -849,8 +860,8 @@ library(tidyverse)
 
 ## Code Chunk Options
 
-````{verbatim lang = "markdown"}
-```{r}
+````
+```{{r}}
 #| warning: false
 
 ggplot(data = penguins,
@@ -893,12 +904,6 @@ This is what I recommend most of the time
 1. Right below the Results header you added previously, create a second code chunk and add some code that you used to make a graph in the data viz section of the course.
 
 1. Render your document and make sure it works!
-
-
-
-
-
-
 
 
 # An Important Workflow Tip {.inverse}
