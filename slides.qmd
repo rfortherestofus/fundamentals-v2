@@ -10,6 +10,7 @@ format:
     incremental: true
     auto-animate: false
     transition: fade
+    code-line-numbers: false
 execute: 
   message: false
   warning: false
@@ -19,6 +20,7 @@ execute:
 title-slide-attributes:
   data-background-image: assets/rru-hex-bg-gradient-dark.svg
   data-background-size: cover
+tbl-colwidths: [50,50]
 ---
 
 
@@ -522,6 +524,381 @@ ggplot(data = inequality_data,
 ```
 
 ![](assets/nyt-inequality-chart.png){height=400px}
+
+# Quarto {.inverse}
+
+## A New Way of Working
+
+Explain problem of having to redo work
+
+## A New Way of Working
+
+Source vs Output
+
+https://jthomasmock.github.io/quarto-in-two-hours/materials/01-intro-quarto.html#/change-your-mental-model
+
+## Quarto Overview
+
+![](assets/quarto-overview.png){width=100%}
+
+::: {.notes}
+- Mention R Markdown
+- If you use Rmd look at my book chapter
+- You'll see a lot about other languages; we'll just focus on R
+:::
+
+## Your Turn {.your-turn}
+
+1. Create a new Quarto file, setting the title as "Penguin Report", the author as your name, and the output format as Word.
+
+1. Save your Quarto file as report.qmd.
+
+1. Look through this Quarto file and make sure that you can identify the YAML, text sections, and code chunks.
+
+1. Click the Render button and open the file that gets produced (report.docx).
+
+## YAML {.inverse}
+
+## YAML
+
+- Stands for "YAML Ain't Markup Language" (don't worry about it).
+
+- Often referred to as the "front matter."
+
+- It is metadata that tells Quarto things like title, author, output format, etc.
+
+---
+
+![](assets/quarto-overview-yaml.png){width=100%}
+
+## Title
+
+```{yaml}
+#| code-line-numbers: "2"
+---
+title: "My Report"
+author: "David Keyes"
+format: docx
+---
+```
+
+## Author
+
+```{yaml}
+#| code-line-numbers: "3"
+---
+title: "My Report"
+author: "David Keyes"
+format: docx
+---
+```
+
+## Format
+
+```{yaml}
+#| code-line-numbers: "4"
+---
+title: "My Report"
+author: "David Keyes"
+format: docx
+---
+```
+
+## Format
+
+```{yaml}
+#| code-line-numbers: "4"
+---
+title: "My Report"
+author: "David Keyes"
+format: pdf
+---
+```
+
+## Format
+
+```{yaml}
+#| code-line-numbers: "4"
+---
+title: "My Report"
+author: "David Keyes"
+format: html
+---
+```
+
+## Your Turn {.your-turn}
+
+1. Go into the YAML and change the title to "My Super Fancy Report."
+
+1. Change the output format to HTML by changing `format: word` to `format: html`.
+
+1. Render again and open report.html to make sure your changes show up.
+
+
+## Text {.inverse}
+
+---
+
+![](assets/quarto-overview-text.png){width=100%}
+
+---
+
+![](assets/word-formatting.png){width=594, fig-align="center"}
+
+::: {.notes}
+Mention visual editor
+:::
+
+---
+
+![](assets/render-quarto.png)
+
+## Markdown {.inverse}
+
+## Bold and Italics
+
+**Markdown**
+
+::: {.fragment}
+```{markdown}
+Text with **some words in bold** and *some words in italics*
+```
+:::
+
+<br>
+**Output**
+
+::: {.fragment}
+Text with **some words in bold** and *some words in italics*
+:::
+
+::: {.notes}
+https://quarto.org/docs/authoring/markdown-basics.html
+:::
+
+## Headers
+
++---------------------+-----------------+
+| Markdown            | Output          |
++=====================+=================+
+|     # Header 1      | # Header 1      |
++---------------------+-----------------+
+|     ## Header 2     | ## Header 2     |
++---------------------+-----------------+
+|     ### Header 3    | ### Header 3    |
++---------------------+-----------------+
+|     #### Header 4   | #### Header 4   |
++---------------------+-----------------+
+|     ##### Header 5  | ##### Header 5  |
++---------------------+-----------------+
+|     ###### Header 6 | ###### Header 6 |
++---------------------+-----------------+
+
+
+## Lists
+
+**Markdown**
+
+::: {.fragment}
+```{markdown}
+- Bulleted list item #1
+- Bulleted list item #2
+```
+:::
+
+<br>
+**Output**
+
+::: {.fragment .nonincremental}
+- Bulleted list item #1
+- Bulleted list item #2
+:::
+
+
+## Ordered Lists
+
+**Markdown**
+
+::: {.fragment}
+```{markdown}
+1. Ordered list item #1
+1. Ordered list item #2
+```
+:::
+
+<br>
+**Output**
+
+::: {.fragment .nonincremental}
+1. Ordered list item #1
+1. Ordered list item #2
+:::
+
+
+## Spacing Matters (A Lot!)
+
+- **Don't** add spaces before the start of lines
+
+- **Do** add space between lines
+
+## Your Turn {.your-turn}
+
+1. Working in your `report.qmd` file, delete the default content (everything below the YAML).
+
+1. Add a first-level header that says "Introduction"
+
+## Your Turn (Continued) {.your-turn}
+
+::: {.fragment .nonincremental}
+3. Add this text (note the bold and italics) below the introduction header: 
+
+::: {.small}
+> This report is about **three** species of penguins: 
+>
+> 1. Adelie
+> 1. Gentoo
+> 1. Chinstrap
+> 
+> You'll learn *so* much about the penguins. I hope you're ready!
+:::
+
+:::
+
+## Your Turn (Continued) {.your-turn}
+
+4. Render your report again and make sure you see the changes.
+
+
+
+## Code Chunks {.inverse}
+
+::: {.notes}
+We don't just want to have text; we always want code
+:::
+
+## Code Chunks
+
+- Used to make numbers, graphs, tables, maps, etc (anything that you would use R to generate)
+
+---
+
+![](assets/quarto-overview-code-chunks.png){width=100%}
+
+## Inserting Code Chunks
+
+![](assets/insert-code-chunk.png)
+
+## Keyboard Shortcut
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Mac**
+
+Command + Option + I
+:::
+
+::: {.column width="50%"}
+**Windows**
+
+Control + Alt + I
+:::
+
+::::
+
+## Running Code Chunks
+
+1. Run code like you would code in an R script file
+
+1. Use buttons in RStudio
+
+---
+
+![](assets/run-code-chunks.png)
+
+
+## Code Chunk Options
+
+- `output`: Do you want to display the output of the code chunk (e.g. the graph)?
+
+- `echo`: Do you want to display the code in the code chunk?
+
+- `message`: Do you want to display any messages R gives you?
+
+- `warning`: Do you want to display any warnings R gives you?
+
+
+
+::: {.notes}
+message: tidyverse loading
+
+warning: removing rows when making plots
+
+[See all code chunk options](https://quarto.org/docs/reference/cells/cells-knitr.html)
+:::
+
+## Code Chunk Options
+
+````{verbatim lang = "markdown"}
+```{r}
+#| message: false
+
+library(tidyverse)
+```
+````
+
+## Code Chunk Options
+
+````{verbatim lang = "markdown"}
+```{r}
+#| warning: false
+
+ggplot(data = penguins,
+       mapping = aes(x = bill_length_mm,
+                     y = bill_depth_mm)) +
+  geom_point()
+```
+````
+
+
+## Global Chunk Options
+
+```{yaml}
+---
+title: "My Report"
+author: "David Keyes"
+format: docx
+execute: 
+  output: true
+  echo: false
+  warning: false
+  message: false
+---
+```
+
+::: {.notes}
+This is what I recommend most of the time
+:::
+
+## Tips for Working with Quarto
+
+1. Run individual code chunks to make sure they work, but then render to make sure the whole document can render
+
+2. The Quarto document needs to be able to run on its own (packages, data, etc)
+
+## Your Turn {.your-turn}
+
+1. Working in your `report.qmd` file, right below the YAML, add a code chunk that loads the tidyverse and imports your penguins data to an object called `penguins`
+
+1. Right below the Results header you added previously, create a second code chunk and add some code that you used to make a graph in the data viz section of the course.
+
+1. Render your document and make sure it works!
+
+
+
+
+
+
 
 
 # An Important Workflow Tip {.inverse}

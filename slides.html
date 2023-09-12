@@ -462,7 +462,7 @@
 <section id="base-r-code" class="slide level2 center">
 <h2>Base R Code</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">mean</span>(data<span class="sc">$</span>satisfaction_rating[data<span class="sc">$</span>year<span class="sc">==</span><span class="dv">2019</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(data<span class="sc">$</span>satisfaction_rating[data<span class="sc">$</span>year<span class="sc">==</span><span class="dv">2019</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li class="fragment"><p>Starts with function, data frame in parentheses</p></li>
@@ -474,9 +474,9 @@
 <section id="tidyverse-code" class="slide level2 center">
 <h2>Tidyverse Code</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>data <span class="sc">|&gt;</span> </span>
-<span id="cb2-2"><a href="#cb2-2"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2019</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb2-3"><a href="#cb2-3"></a>  <span class="fu">summarize</span>(<span class="at">mean_satisfaction =</span> <span class="fu">mean</span>(satisfaction_rating))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">|&gt;</span> </span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(year <span class="sc">==</span> <span class="dv">2019</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_satisfaction =</span> <span class="fu">mean</span>(satisfaction_rating))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <ul>
 <li class="fragment"><p>Nicely named functions because “the bottleneck in most data analysis is thinking time” - <a href="https://tidyverse.tidyverse.org/articles/manifesto.html">The tidy tools manifesto</a></p></li>
@@ -492,18 +492,18 @@
 <section id="code-without-pipes" class="slide level2 center">
 <h2>Code Without Pipes</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">select</span>(</span>
-<span id="cb3-2"><a href="#cb3-2"></a>  <span class="fu">mutate</span>(penguins, </span>
-<span id="cb3-3"><a href="#cb3-3"></a>         <span class="at">body_mass_lbs =</span> body_mass_g <span class="sc">/</span> <span class="fl">453.6</span>), </span>
-<span id="cb3-4"><a href="#cb3-4"></a>  body_mass_lbs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(penguins, </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>         <span class="at">body_mass_lbs =</span> body_mass_g <span class="sc">/</span> <span class="fl">453.6</span>), </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  body_mass_lbs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="code-with-pipes" class="slide level2 center">
 <h2>Code With Pipes</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb4-2"><a href="#cb4-2"></a>  <span class="fu">mutate</span>(<span class="at">body_mass_lbs =</span> body_mass_g <span class="sc">/</span> <span class="fl">453.6</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb4-3"><a href="#cb4-3"></a>  <span class="fu">select</span>(body_mass_lbs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">body_mass_lbs =</span> body_mass_g <span class="sc">/</span> <span class="fl">453.6</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(body_mass_lbs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="pipes-then" class="slide level2 center">
@@ -586,8 +586,8 @@ Tidyverse pipe
 <section id="select-1" class="slide level2 center">
 <h2><code>select()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>data_frame <span class="sc">|&gt;</span> </span>
-<span id="cb5-2"><a href="#cb5-2"></a>  <span class="fu">select</span>(variable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>data_frame <span class="sc">|&gt;</span> </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(variable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="keyboard-shortcut-to-run-code" class="slide level2 center">
@@ -610,16 +610,16 @@ Tidyverse pipe
 <section id="mutate-1" class="slide level2 center">
 <h2><code>mutate()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a>data_frame <span class="sc">|&gt;</span> </span>
-<span id="cb6-2"><a href="#cb6-2"></a>  <span class="fu">mutate</span>(<span class="at">new_variable =</span> variable <span class="sc">+</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>data_frame <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">new_variable =</span> variable <span class="sc">+</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="mutate-2" class="slide level2 center">
 <h2><code>mutate()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a>penguins <span class="sc">|&gt;</span> </span>
-<span id="cb7-2"><a href="#cb7-2"></a>  <span class="fu">mutate</span>(<span class="at">weight_bill_ratio =</span> </span>
-<span id="cb7-3"><a href="#cb7-3"></a>           body_mass_g <span class="sc">/</span> bill_length_mm) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>penguins <span class="sc">|&gt;</span> </span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">weight_bill_ratio =</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>           body_mass_g <span class="sc">/</span> bill_length_mm) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section>
@@ -630,8 +630,8 @@ Tidyverse pipe
 <section id="filter-1" class="slide level2 center">
 <h2><code>filter()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>data_frame <span class="sc">|&gt;</span> </span>
-<span id="cb8-2"><a href="#cb8-2"></a>  <span class="fu">filter</span>(variable <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>data_frame <span class="sc">|&gt;</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(variable <span class="sc">&gt;</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="comparison-operators" class="slide level2 center">
@@ -639,25 +639,25 @@ Tidyverse pipe
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="xxiofcoddc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="awarejrccb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#xxiofcoddc table {
+#awarejrccb table {
   font-family: Inter, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', Chivo;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#xxiofcoddc thead, #xxiofcoddc tbody, #xxiofcoddc tfoot, #xxiofcoddc tr, #xxiofcoddc td, #xxiofcoddc th {
+#awarejrccb thead, #awarejrccb tbody, #awarejrccb tfoot, #awarejrccb tr, #awarejrccb td, #awarejrccb th {
   border-style: none;
 }
 
-#xxiofcoddc p {
+#awarejrccb p {
   margin: 0;
   padding: 0;
 }
 
-#xxiofcoddc .gt_table {
+#awarejrccb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -683,12 +683,12 @@ Tidyverse pipe
   border-left-color: #D3D3D3;
 }
 
-#xxiofcoddc .gt_caption {
+#awarejrccb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#xxiofcoddc .gt_title {
+#awarejrccb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -700,7 +700,7 @@ Tidyverse pipe
   border-bottom-width: 0;
 }
 
-#xxiofcoddc .gt_subtitle {
+#awarejrccb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -712,7 +712,7 @@ Tidyverse pipe
   border-top-width: 0;
 }
 
-#xxiofcoddc .gt_heading {
+#awarejrccb .gt_heading {
   background-color: rgba(255, 255, 255, 0);
   text-align: left;
   border-bottom-color: rgba(255, 255, 255, 0);
@@ -724,13 +724,13 @@ Tidyverse pipe
   border-right-color: #D3D3D3;
 }
 
-#xxiofcoddc .gt_bottom_border {
+#awarejrccb .gt_bottom_border {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xxiofcoddc .gt_col_headings {
+#awarejrccb .gt_col_headings {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -745,7 +745,7 @@ Tidyverse pipe
   border-right-color: #D3D3D3;
 }
 
-#xxiofcoddc .gt_col_heading {
+#awarejrccb .gt_col_heading {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   font-size: 80%;
@@ -765,7 +765,7 @@ Tidyverse pipe
   overflow-x: hidden;
 }
 
-#xxiofcoddc .gt_column_spanner_outer {
+#awarejrccb .gt_column_spanner_outer {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   font-size: 80%;
@@ -777,15 +777,15 @@ Tidyverse pipe
   padding-right: 4px;
 }
 
-#xxiofcoddc .gt_column_spanner_outer:first-child {
+#awarejrccb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xxiofcoddc .gt_column_spanner_outer:last-child {
+#awarejrccb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xxiofcoddc .gt_column_spanner {
+#awarejrccb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #404E6B;
@@ -797,11 +797,11 @@ Tidyverse pipe
   width: 100%;
 }
 
-#xxiofcoddc .gt_spanner_row {
+#awarejrccb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#xxiofcoddc .gt_group_heading {
+#awarejrccb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -827,7 +827,7 @@ Tidyverse pipe
   text-align: left;
 }
 
-#xxiofcoddc .gt_empty_group_heading {
+#awarejrccb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
@@ -842,15 +842,15 @@ Tidyverse pipe
   vertical-align: middle;
 }
 
-#xxiofcoddc .gt_from_md > :first-child {
+#awarejrccb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xxiofcoddc .gt_from_md > :last-child {
+#awarejrccb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xxiofcoddc .gt_row {
+#awarejrccb .gt_row {
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 5px;
@@ -869,7 +869,7 @@ Tidyverse pipe
   overflow-x: hidden;
 }
 
-#xxiofcoddc .gt_stub {
+#awarejrccb .gt_stub {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   font-size: 80%;
@@ -882,7 +882,7 @@ Tidyverse pipe
   padding-right: 5px;
 }
 
-#xxiofcoddc .gt_stub_row_group {
+#awarejrccb .gt_stub_row_group {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   font-size: 100%;
@@ -896,15 +896,15 @@ Tidyverse pipe
   vertical-align: top;
 }
 
-#xxiofcoddc .gt_row_group_first td {
+#awarejrccb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xxiofcoddc .gt_row_group_first th {
+#awarejrccb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#xxiofcoddc .gt_summary_row {
+#awarejrccb .gt_summary_row {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   text-transform: inherit;
@@ -914,16 +914,16 @@ Tidyverse pipe
   padding-right: 5px;
 }
 
-#xxiofcoddc .gt_first_summary_row {
+#awarejrccb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xxiofcoddc .gt_first_summary_row.thick {
+#awarejrccb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xxiofcoddc .gt_last_summary_row {
+#awarejrccb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -933,7 +933,7 @@ Tidyverse pipe
   border-bottom-color: #D3D3D3;
 }
 
-#xxiofcoddc .gt_grand_summary_row {
+#awarejrccb .gt_grand_summary_row {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   text-transform: inherit;
@@ -943,7 +943,7 @@ Tidyverse pipe
   padding-right: 5px;
 }
 
-#xxiofcoddc .gt_first_grand_summary_row {
+#awarejrccb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -953,7 +953,7 @@ Tidyverse pipe
   border-top-color: #D3D3D3;
 }
 
-#xxiofcoddc .gt_last_grand_summary_row_top {
+#awarejrccb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -963,11 +963,11 @@ Tidyverse pipe
   border-bottom-color: #D3D3D3;
 }
 
-#xxiofcoddc .gt_striped {
+#awarejrccb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xxiofcoddc .gt_table_body {
+#awarejrccb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -976,7 +976,7 @@ Tidyverse pipe
   border-bottom-color: #D3D3D3;
 }
 
-#xxiofcoddc .gt_footnotes {
+#awarejrccb .gt_footnotes {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   border-bottom-style: none;
@@ -990,7 +990,7 @@ Tidyverse pipe
   border-right-color: #D3D3D3;
 }
 
-#xxiofcoddc .gt_footnote {
+#awarejrccb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -999,7 +999,7 @@ Tidyverse pipe
   padding-right: 5px;
 }
 
-#xxiofcoddc .gt_sourcenotes {
+#awarejrccb .gt_sourcenotes {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   border-bottom-style: none;
@@ -1013,7 +1013,7 @@ Tidyverse pipe
   border-right-color: #D3D3D3;
 }
 
-#xxiofcoddc .gt_sourcenote {
+#awarejrccb .gt_sourcenote {
   font-size: 12px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1021,63 +1021,63 @@ Tidyverse pipe
   padding-right: 5px;
 }
 
-#xxiofcoddc .gt_left {
+#awarejrccb .gt_left {
   text-align: left;
 }
 
-#xxiofcoddc .gt_center {
+#awarejrccb .gt_center {
   text-align: center;
 }
 
-#xxiofcoddc .gt_right {
+#awarejrccb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xxiofcoddc .gt_font_normal {
+#awarejrccb .gt_font_normal {
   font-weight: normal;
 }
 
-#xxiofcoddc .gt_font_bold {
+#awarejrccb .gt_font_bold {
   font-weight: bold;
 }
 
-#xxiofcoddc .gt_font_italic {
+#awarejrccb .gt_font_italic {
   font-style: italic;
 }
 
-#xxiofcoddc .gt_super {
+#awarejrccb .gt_super {
   font-size: 65%;
 }
 
-#xxiofcoddc .gt_footnote_marks {
+#awarejrccb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#xxiofcoddc .gt_asterisk {
+#awarejrccb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xxiofcoddc .gt_indent_1 {
+#awarejrccb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xxiofcoddc .gt_indent_2 {
+#awarejrccb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xxiofcoddc .gt_indent_3 {
+#awarejrccb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xxiofcoddc .gt_indent_4 {
+#awarejrccb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xxiofcoddc .gt_indent_5 {
+#awarejrccb .gt_indent_5 {
   text-indent: 25px;
 }
 
@@ -1150,25 +1150,25 @@ tbody tr:last-child {
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="waxaybsmzr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="bkhgvofyvi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#waxaybsmzr table {
+#bkhgvofyvi table {
   font-family: Inter, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', Chivo;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#waxaybsmzr thead, #waxaybsmzr tbody, #waxaybsmzr tfoot, #waxaybsmzr tr, #waxaybsmzr td, #waxaybsmzr th {
+#bkhgvofyvi thead, #bkhgvofyvi tbody, #bkhgvofyvi tfoot, #bkhgvofyvi tr, #bkhgvofyvi td, #bkhgvofyvi th {
   border-style: none;
 }
 
-#waxaybsmzr p {
+#bkhgvofyvi p {
   margin: 0;
   padding: 0;
 }
 
-#waxaybsmzr .gt_table {
+#bkhgvofyvi .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1194,12 +1194,12 @@ tbody tr:last-child {
   border-left-color: #D3D3D3;
 }
 
-#waxaybsmzr .gt_caption {
+#bkhgvofyvi .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#waxaybsmzr .gt_title {
+#bkhgvofyvi .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1211,7 +1211,7 @@ tbody tr:last-child {
   border-bottom-width: 0;
 }
 
-#waxaybsmzr .gt_subtitle {
+#bkhgvofyvi .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1223,7 +1223,7 @@ tbody tr:last-child {
   border-top-width: 0;
 }
 
-#waxaybsmzr .gt_heading {
+#bkhgvofyvi .gt_heading {
   background-color: rgba(255, 255, 255, 0);
   text-align: left;
   border-bottom-color: rgba(255, 255, 255, 0);
@@ -1235,13 +1235,13 @@ tbody tr:last-child {
   border-right-color: #D3D3D3;
 }
 
-#waxaybsmzr .gt_bottom_border {
+#bkhgvofyvi .gt_bottom_border {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#waxaybsmzr .gt_col_headings {
+#bkhgvofyvi .gt_col_headings {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1256,7 +1256,7 @@ tbody tr:last-child {
   border-right-color: #D3D3D3;
 }
 
-#waxaybsmzr .gt_col_heading {
+#bkhgvofyvi .gt_col_heading {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   font-size: 80%;
@@ -1276,7 +1276,7 @@ tbody tr:last-child {
   overflow-x: hidden;
 }
 
-#waxaybsmzr .gt_column_spanner_outer {
+#bkhgvofyvi .gt_column_spanner_outer {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   font-size: 80%;
@@ -1288,15 +1288,15 @@ tbody tr:last-child {
   padding-right: 4px;
 }
 
-#waxaybsmzr .gt_column_spanner_outer:first-child {
+#bkhgvofyvi .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#waxaybsmzr .gt_column_spanner_outer:last-child {
+#bkhgvofyvi .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#waxaybsmzr .gt_column_spanner {
+#bkhgvofyvi .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #404E6B;
@@ -1308,11 +1308,11 @@ tbody tr:last-child {
   width: 100%;
 }
 
-#waxaybsmzr .gt_spanner_row {
+#bkhgvofyvi .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#waxaybsmzr .gt_group_heading {
+#bkhgvofyvi .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1338,7 +1338,7 @@ tbody tr:last-child {
   text-align: left;
 }
 
-#waxaybsmzr .gt_empty_group_heading {
+#bkhgvofyvi .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
@@ -1353,15 +1353,15 @@ tbody tr:last-child {
   vertical-align: middle;
 }
 
-#waxaybsmzr .gt_from_md > :first-child {
+#bkhgvofyvi .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#waxaybsmzr .gt_from_md > :last-child {
+#bkhgvofyvi .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#waxaybsmzr .gt_row {
+#bkhgvofyvi .gt_row {
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 5px;
@@ -1380,7 +1380,7 @@ tbody tr:last-child {
   overflow-x: hidden;
 }
 
-#waxaybsmzr .gt_stub {
+#bkhgvofyvi .gt_stub {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   font-size: 80%;
@@ -1393,7 +1393,7 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#waxaybsmzr .gt_stub_row_group {
+#bkhgvofyvi .gt_stub_row_group {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   font-size: 100%;
@@ -1407,15 +1407,15 @@ tbody tr:last-child {
   vertical-align: top;
 }
 
-#waxaybsmzr .gt_row_group_first td {
+#bkhgvofyvi .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#waxaybsmzr .gt_row_group_first th {
+#bkhgvofyvi .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#waxaybsmzr .gt_summary_row {
+#bkhgvofyvi .gt_summary_row {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   text-transform: inherit;
@@ -1425,16 +1425,16 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#waxaybsmzr .gt_first_summary_row {
+#bkhgvofyvi .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#waxaybsmzr .gt_first_summary_row.thick {
+#bkhgvofyvi .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#waxaybsmzr .gt_last_summary_row {
+#bkhgvofyvi .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1444,7 +1444,7 @@ tbody tr:last-child {
   border-bottom-color: #D3D3D3;
 }
 
-#waxaybsmzr .gt_grand_summary_row {
+#bkhgvofyvi .gt_grand_summary_row {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   text-transform: inherit;
@@ -1454,7 +1454,7 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#waxaybsmzr .gt_first_grand_summary_row {
+#bkhgvofyvi .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1464,7 +1464,7 @@ tbody tr:last-child {
   border-top-color: #D3D3D3;
 }
 
-#waxaybsmzr .gt_last_grand_summary_row_top {
+#bkhgvofyvi .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1474,11 +1474,11 @@ tbody tr:last-child {
   border-bottom-color: #D3D3D3;
 }
 
-#waxaybsmzr .gt_striped {
+#bkhgvofyvi .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#waxaybsmzr .gt_table_body {
+#bkhgvofyvi .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1487,7 +1487,7 @@ tbody tr:last-child {
   border-bottom-color: #D3D3D3;
 }
 
-#waxaybsmzr .gt_footnotes {
+#bkhgvofyvi .gt_footnotes {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   border-bottom-style: none;
@@ -1501,7 +1501,7 @@ tbody tr:last-child {
   border-right-color: #D3D3D3;
 }
 
-#waxaybsmzr .gt_footnote {
+#bkhgvofyvi .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1510,7 +1510,7 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#waxaybsmzr .gt_sourcenotes {
+#bkhgvofyvi .gt_sourcenotes {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   border-bottom-style: none;
@@ -1524,7 +1524,7 @@ tbody tr:last-child {
   border-right-color: #D3D3D3;
 }
 
-#waxaybsmzr .gt_sourcenote {
+#bkhgvofyvi .gt_sourcenote {
   font-size: 12px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1532,63 +1532,63 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#waxaybsmzr .gt_left {
+#bkhgvofyvi .gt_left {
   text-align: left;
 }
 
-#waxaybsmzr .gt_center {
+#bkhgvofyvi .gt_center {
   text-align: center;
 }
 
-#waxaybsmzr .gt_right {
+#bkhgvofyvi .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#waxaybsmzr .gt_font_normal {
+#bkhgvofyvi .gt_font_normal {
   font-weight: normal;
 }
 
-#waxaybsmzr .gt_font_bold {
+#bkhgvofyvi .gt_font_bold {
   font-weight: bold;
 }
 
-#waxaybsmzr .gt_font_italic {
+#bkhgvofyvi .gt_font_italic {
   font-style: italic;
 }
 
-#waxaybsmzr .gt_super {
+#bkhgvofyvi .gt_super {
   font-size: 65%;
 }
 
-#waxaybsmzr .gt_footnote_marks {
+#bkhgvofyvi .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#waxaybsmzr .gt_asterisk {
+#bkhgvofyvi .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#waxaybsmzr .gt_indent_1 {
+#bkhgvofyvi .gt_indent_1 {
   text-indent: 5px;
 }
 
-#waxaybsmzr .gt_indent_2 {
+#bkhgvofyvi .gt_indent_2 {
   text-indent: 10px;
 }
 
-#waxaybsmzr .gt_indent_3 {
+#bkhgvofyvi .gt_indent_3 {
   text-indent: 15px;
 }
 
-#waxaybsmzr .gt_indent_4 {
+#bkhgvofyvi .gt_indent_4 {
   text-indent: 20px;
 }
 
-#waxaybsmzr .gt_indent_5 {
+#bkhgvofyvi .gt_indent_5 {
   text-indent: 25px;
 }
 
@@ -1626,8 +1626,8 @@ tbody tr:last-child {
 <section id="logical-operators-1" class="slide level2 center">
 <h2>Logical Operators</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>data_frame <span class="sc">|&gt;</span> </span>
-<span id="cb9-2"><a href="#cb9-2"></a>  <span class="fu">filter</span>(variable <span class="sc">&gt;</span> <span class="dv">1</span> <span class="sc">&amp;</span> variable_2 <span class="sc">&lt;</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>data_frame <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(variable <span class="sc">&gt;</span> <span class="dv">1</span> <span class="sc">&amp;</span> variable_2 <span class="sc">&lt;</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes">
 <ul>
@@ -1665,9 +1665,9 @@ tbody tr:last-child {
 <section id="summarize-1" class="slide level2 center">
 <h2><code>summarize()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>data_frame <span class="sc">|&gt;</span> </span>
-<span id="cb10-2"><a href="#cb10-2"></a>  <span class="fu">summarize</span>(<span class="at">summary_variable =</span> </span>
-<span id="cb10-3"><a href="#cb10-3"></a>              <span class="fu">summary_function</span>(variable))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>data_frame <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">summary_variable =</span> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>              <span class="fu">summary_function</span>(variable))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="summary-functions" class="slide level2 center">
@@ -1675,25 +1675,25 @@ tbody tr:last-child {
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="vpaazoyqyv" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="cmcappzpia" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Chivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#vpaazoyqyv table {
+#cmcappzpia table {
   font-family: Inter, system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', Chivo;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#vpaazoyqyv thead, #vpaazoyqyv tbody, #vpaazoyqyv tfoot, #vpaazoyqyv tr, #vpaazoyqyv td, #vpaazoyqyv th {
+#cmcappzpia thead, #cmcappzpia tbody, #cmcappzpia tfoot, #cmcappzpia tr, #cmcappzpia td, #cmcappzpia th {
   border-style: none;
 }
 
-#vpaazoyqyv p {
+#cmcappzpia p {
   margin: 0;
   padding: 0;
 }
 
-#vpaazoyqyv .gt_table {
+#cmcappzpia .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1719,12 +1719,12 @@ tbody tr:last-child {
   border-left-color: #D3D3D3;
 }
 
-#vpaazoyqyv .gt_caption {
+#cmcappzpia .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#vpaazoyqyv .gt_title {
+#cmcappzpia .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1736,7 +1736,7 @@ tbody tr:last-child {
   border-bottom-width: 0;
 }
 
-#vpaazoyqyv .gt_subtitle {
+#cmcappzpia .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1748,7 +1748,7 @@ tbody tr:last-child {
   border-top-width: 0;
 }
 
-#vpaazoyqyv .gt_heading {
+#cmcappzpia .gt_heading {
   background-color: rgba(255, 255, 255, 0);
   text-align: left;
   border-bottom-color: rgba(255, 255, 255, 0);
@@ -1760,13 +1760,13 @@ tbody tr:last-child {
   border-right-color: #D3D3D3;
 }
 
-#vpaazoyqyv .gt_bottom_border {
+#cmcappzpia .gt_bottom_border {
   border-bottom-style: none;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#vpaazoyqyv .gt_col_headings {
+#cmcappzpia .gt_col_headings {
   border-top-style: none;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1781,7 +1781,7 @@ tbody tr:last-child {
   border-right-color: #D3D3D3;
 }
 
-#vpaazoyqyv .gt_col_heading {
+#cmcappzpia .gt_col_heading {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   font-size: 80%;
@@ -1801,7 +1801,7 @@ tbody tr:last-child {
   overflow-x: hidden;
 }
 
-#vpaazoyqyv .gt_column_spanner_outer {
+#cmcappzpia .gt_column_spanner_outer {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   font-size: 80%;
@@ -1813,15 +1813,15 @@ tbody tr:last-child {
   padding-right: 4px;
 }
 
-#vpaazoyqyv .gt_column_spanner_outer:first-child {
+#cmcappzpia .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#vpaazoyqyv .gt_column_spanner_outer:last-child {
+#cmcappzpia .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#vpaazoyqyv .gt_column_spanner {
+#cmcappzpia .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #404E6B;
@@ -1833,11 +1833,11 @@ tbody tr:last-child {
   width: 100%;
 }
 
-#vpaazoyqyv .gt_spanner_row {
+#cmcappzpia .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#vpaazoyqyv .gt_group_heading {
+#cmcappzpia .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1863,7 +1863,7 @@ tbody tr:last-child {
   text-align: left;
 }
 
-#vpaazoyqyv .gt_empty_group_heading {
+#cmcappzpia .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
@@ -1878,15 +1878,15 @@ tbody tr:last-child {
   vertical-align: middle;
 }
 
-#vpaazoyqyv .gt_from_md > :first-child {
+#cmcappzpia .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vpaazoyqyv .gt_from_md > :last-child {
+#cmcappzpia .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vpaazoyqyv .gt_row {
+#cmcappzpia .gt_row {
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 5px;
@@ -1905,7 +1905,7 @@ tbody tr:last-child {
   overflow-x: hidden;
 }
 
-#vpaazoyqyv .gt_stub {
+#cmcappzpia .gt_stub {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   font-size: 80%;
@@ -1918,7 +1918,7 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#vpaazoyqyv .gt_stub_row_group {
+#cmcappzpia .gt_stub_row_group {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   font-size: 100%;
@@ -1932,15 +1932,15 @@ tbody tr:last-child {
   vertical-align: top;
 }
 
-#vpaazoyqyv .gt_row_group_first td {
+#cmcappzpia .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#vpaazoyqyv .gt_row_group_first th {
+#cmcappzpia .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#vpaazoyqyv .gt_summary_row {
+#cmcappzpia .gt_summary_row {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   text-transform: inherit;
@@ -1950,16 +1950,16 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#vpaazoyqyv .gt_first_summary_row {
+#cmcappzpia .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#vpaazoyqyv .gt_first_summary_row.thick {
+#cmcappzpia .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#vpaazoyqyv .gt_last_summary_row {
+#cmcappzpia .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1969,7 +1969,7 @@ tbody tr:last-child {
   border-bottom-color: #D3D3D3;
 }
 
-#vpaazoyqyv .gt_grand_summary_row {
+#cmcappzpia .gt_grand_summary_row {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   text-transform: inherit;
@@ -1979,7 +1979,7 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#vpaazoyqyv .gt_first_grand_summary_row {
+#cmcappzpia .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1989,7 +1989,7 @@ tbody tr:last-child {
   border-top-color: #D3D3D3;
 }
 
-#vpaazoyqyv .gt_last_grand_summary_row_top {
+#cmcappzpia .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1999,11 +1999,11 @@ tbody tr:last-child {
   border-bottom-color: #D3D3D3;
 }
 
-#vpaazoyqyv .gt_striped {
+#cmcappzpia .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#vpaazoyqyv .gt_table_body {
+#cmcappzpia .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2012,7 +2012,7 @@ tbody tr:last-child {
   border-bottom-color: #D3D3D3;
 }
 
-#vpaazoyqyv .gt_footnotes {
+#cmcappzpia .gt_footnotes {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   border-bottom-style: none;
@@ -2026,7 +2026,7 @@ tbody tr:last-child {
   border-right-color: #D3D3D3;
 }
 
-#vpaazoyqyv .gt_footnote {
+#cmcappzpia .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2035,7 +2035,7 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#vpaazoyqyv .gt_sourcenotes {
+#cmcappzpia .gt_sourcenotes {
   color: #333333;
   background-color: rgba(255, 255, 255, 0);
   border-bottom-style: none;
@@ -2049,7 +2049,7 @@ tbody tr:last-child {
   border-right-color: #D3D3D3;
 }
 
-#vpaazoyqyv .gt_sourcenote {
+#cmcappzpia .gt_sourcenote {
   font-size: 12px;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2057,63 +2057,63 @@ tbody tr:last-child {
   padding-right: 5px;
 }
 
-#vpaazoyqyv .gt_left {
+#cmcappzpia .gt_left {
   text-align: left;
 }
 
-#vpaazoyqyv .gt_center {
+#cmcappzpia .gt_center {
   text-align: center;
 }
 
-#vpaazoyqyv .gt_right {
+#cmcappzpia .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vpaazoyqyv .gt_font_normal {
+#cmcappzpia .gt_font_normal {
   font-weight: normal;
 }
 
-#vpaazoyqyv .gt_font_bold {
+#cmcappzpia .gt_font_bold {
   font-weight: bold;
 }
 
-#vpaazoyqyv .gt_font_italic {
+#cmcappzpia .gt_font_italic {
   font-style: italic;
 }
 
-#vpaazoyqyv .gt_super {
+#cmcappzpia .gt_super {
   font-size: 65%;
 }
 
-#vpaazoyqyv .gt_footnote_marks {
+#cmcappzpia .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#vpaazoyqyv .gt_asterisk {
+#cmcappzpia .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#vpaazoyqyv .gt_indent_1 {
+#cmcappzpia .gt_indent_1 {
   text-indent: 5px;
 }
 
-#vpaazoyqyv .gt_indent_2 {
+#cmcappzpia .gt_indent_2 {
   text-indent: 10px;
 }
 
-#vpaazoyqyv .gt_indent_3 {
+#cmcappzpia .gt_indent_3 {
   text-indent: 15px;
 }
 
-#vpaazoyqyv .gt_indent_4 {
+#cmcappzpia .gt_indent_4 {
   text-indent: 20px;
 }
 
-#vpaazoyqyv .gt_indent_5 {
+#cmcappzpia .gt_indent_5 {
   text-indent: 25px;
 }
 
@@ -2164,9 +2164,9 @@ tbody tr:last-child {
 <section id="group_by-and-summarize-1" class="slide level2 center">
 <h2><code>group_by()</code> and <code>summarize()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a>data_frame <span class="sc">|&gt;</span> </span>
-<span id="cb11-2"><a href="#cb11-2"></a>  <span class="fu">group_by</span>(grouping_variable) <span class="sc">|&gt;</span> </span>
-<span id="cb11-3"><a href="#cb11-3"></a>  <span class="fu">summarize</span>(<span class="at">summary_variable =</span> <span class="fu">summary_function</span>(variable))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>data_frame <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(grouping_variable) <span class="sc">|&gt;</span> </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">summary_variable =</span> <span class="fu">summary_function</span>(variable))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes">
 <ul>
@@ -2192,8 +2192,8 @@ tbody tr:last-child {
 <section id="arrange-1" class="slide level2 center">
 <h2><code>arrange()</code></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>data_frame <span class="sc">|&gt;</span> </span>
-<span id="cb12-2"><a href="#cb12-2"></a>  <span class="fu">arrange</span>(variable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>data_frame <span class="sc">|&gt;</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(variable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section></section>
 <section>
@@ -2204,17 +2204,17 @@ tbody tr:last-child {
 <section id="this-does-not-create-a-new-data-frame" class="slide level2 center">
 <h2>This Does Not Create a New Data Frame</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a>data_frame <span class="sc">|&gt;</span> </span>
-<span id="cb13-2"><a href="#cb13-2"></a>  <span class="fu">filter</span>(variable <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb13-3"><a href="#cb13-3"></a>  <span class="fu">arrange</span>(variable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>data_frame <span class="sc">|&gt;</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(variable <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(variable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="this-creates-a-new-data-frame" class="slide level2 center">
 <h2>This Creates a New Data Frame</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>data_frame_2 <span class="ot">&lt;-</span> data_frame <span class="sc">|&gt;</span> </span>
-<span id="cb14-2"><a href="#cb14-2"></a>  <span class="fu">filter</span>(variable <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb14-3"><a href="#cb14-3"></a>  <span class="fu">arrange</span>(variable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>data_frame_2 <span class="ot">&lt;-</span> data_frame <span class="sc">|&gt;</span> </span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(variable <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(variable)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <aside class="notes">
 <ul>
@@ -2324,13 +2324,440 @@ tbody tr:last-child {
 <section class="slide level2 center">
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> inequality_data,</span>
-<span id="cb15-2"><a href="#cb15-2"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year,</span>
-<span id="cb15-3"><a href="#cb15-3"></a>                     <span class="at">y =</span> income_change,</span>
-<span id="cb15-4"><a href="#cb15-4"></a>                     <span class="at">color =</span> income_group)) <span class="sc">+</span></span>
-<span id="cb15-5"><a href="#cb15-5"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> inequality_data,</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> year,</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                     <span class="at">y =</span> income_change,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                     <span class="at">color =</span> income_group)) <span class="sc">+</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><img data-src="assets/nyt-inequality-chart.png" height="400"></p>
+</section></section>
+<section>
+<section id="quarto" class="title-slide slide level1 inverse center">
+<h1>Quarto</h1>
+
+</section>
+<section id="a-new-way-of-working" class="slide level2 center">
+<h2>A New Way of Working</h2>
+<p>Explain problem of having to redo work</p>
+</section>
+<section id="a-new-way-of-working-1" class="slide level2 center">
+<h2>A New Way of Working</h2>
+<p>Source vs Output</p>
+<p>https://jthomasmock.github.io/quarto-in-two-hours/materials/01-intro-quarto.html#/change-your-mental-model</p>
+</section>
+<section id="quarto-overview" class="slide level2 center">
+<h2>Quarto Overview</h2>
+
+<img data-src="assets/quarto-overview.png" style="width:100.0%" class="r-stretch"><aside class="notes">
+<ul>
+<li>Mention R Markdown</li>
+<li>If you use Rmd look at my book chapter</li>
+<li>You’ll see a lot about other languages; we’ll just focus on R</li>
+</ul>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="your-turn-3" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<ol type="1">
+<li class="fragment"><p>Create a new Quarto file, setting the title as “Penguin Report”, the author as your name, and the output format as Word.</p></li>
+<li class="fragment"><p>Save your Quarto file as report.qmd.</p></li>
+<li class="fragment"><p>Look through this Quarto file and make sure that you can identify the YAML, text sections, and code chunks.</p></li>
+<li class="fragment"><p>Click the Render button and open the file that gets produced (report.docx).</p></li>
+</ol>
+</section>
+<section id="yaml" class="slide level2 inverse center">
+<h2>YAML</h2>
+</section>
+<section id="yaml-1" class="slide level2 center">
+<h2>YAML</h2>
+<ul>
+<li class="fragment"><p>Stands for “YAML Ain’t Markup Language” (don’t worry about it).</p></li>
+<li class="fragment"><p>Often referred to as the “front matter.”</p></li>
+<li class="fragment"><p>It is metadata that tells Quarto things like title, author, output format, etc.</p></li>
+</ul>
+</section>
+<section class="slide level2 center">
+
+
+<img data-src="assets/quarto-overview-yaml.png" style="width:100.0%" class="r-stretch"></section>
+<section id="title" class="slide level2 center">
+<h2>Title</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16" data-code-line-numbers="2"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb16-1"><a href="#cb16-1"></a><span class="pp">---</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Report"</span></span>
+<span id="cb16-3"><a href="#cb16-3"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"David Keyes"</span></span>
+<span id="cb16-4"><a href="#cb16-4"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> docx</span></span>
+<span id="cb16-5"><a href="#cb16-5"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="author" class="slide level2 center">
+<h2>Author</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17" data-code-line-numbers="3"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb17-1"><a href="#cb17-1"></a><span class="pp">---</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Report"</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"David Keyes"</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> docx</span></span>
+<span id="cb17-5"><a href="#cb17-5"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="format" class="slide level2 center">
+<h2>Format</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18" data-code-line-numbers="4"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb18-1"><a href="#cb18-1"></a><span class="pp">---</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Report"</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"David Keyes"</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> docx</span></span>
+<span id="cb18-5"><a href="#cb18-5"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="format-1" class="slide level2 center">
+<h2>Format</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19" data-code-line-numbers="4"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb19-1"><a href="#cb19-1"></a><span class="pp">---</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Report"</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"David Keyes"</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> pdf</span></span>
+<span id="cb19-5"><a href="#cb19-5"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="format-2" class="slide level2 center">
+<h2>Format</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20" data-code-line-numbers="4"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb20-1"><a href="#cb20-1"></a><span class="pp">---</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Report"</span></span>
+<span id="cb20-3"><a href="#cb20-3"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"David Keyes"</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> html</span></span>
+<span id="cb20-5"><a href="#cb20-5"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="your-turn-4" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<ol type="1">
+<li class="fragment"><p>Go into the YAML and change the title to “My Super Fancy Report.”</p></li>
+<li class="fragment"><p>Change the output format to HTML by changing <code>format: word</code> to <code>format: html</code>.</p></li>
+<li class="fragment"><p>Render again and open report.html to make sure your changes show up.</p></li>
+</ol>
+</section>
+<section id="text" class="slide level2 inverse center">
+<h2>Text</h2>
+</section>
+<section class="slide level2 center">
+
+
+<img data-src="assets/quarto-overview-text.png" style="width:100.0%" class="r-stretch"></section>
+<section class="slide level2 center">
+
+
+<img data-src="assets/word-formatting.png" class="r-stretch quarto-figure-center"><aside class="notes">
+<p>Mention visual editor</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section class="slide level2 center">
+
+
+<img data-src="assets/render-quarto.png" class="r-stretch"></section>
+<section id="markdown" class="slide level2 inverse center">
+<h2>Markdown</h2>
+</section>
+<section id="bold-and-italics" class="slide level2 center">
+<h2>Bold and Italics</h2>
+<p><strong>Markdown</strong></p>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>Text with **some words in bold** and *some words in italics*</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p><br> <strong>Output</strong></p>
+<div class="fragment">
+<p>Text with <strong>some words in bold</strong> and <em>some words in italics</em></p>
+</div>
+<aside class="notes">
+<p>https://quarto.org/docs/authoring/markdown-basics.html</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="headers" class="slide level2 center">
+<h2>Headers</h2>
+<table>
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Markdown</th>
+<th>Output</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><pre><code># Header 1</code></pre></td>
+<td><h1 id="header-1">Header 1</h1></td>
+</tr>
+<tr class="even">
+<td><pre><code>## Header 2</code></pre></td>
+<td><h2 id="header-2">Header 2</h2></td>
+</tr>
+<tr class="odd">
+<td><pre><code>### Header 3</code></pre></td>
+<td><h3 id="header-3">Header 3</h3></td>
+</tr>
+<tr class="even">
+<td><pre><code>#### Header 4</code></pre></td>
+<td><h4 id="header-4">Header 4</h4></td>
+</tr>
+<tr class="odd">
+<td><pre><code>##### Header 5</code></pre></td>
+<td><h5 id="header-5">Header 5</h5></td>
+</tr>
+<tr class="even">
+<td><pre><code>###### Header 6</code></pre></td>
+<td><h6 id="header-6">Header 6</h6></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="lists" class="slide level2 center">
+<h2>Lists</h2>
+<p><strong>Markdown</strong></p>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Bulleted list item #1</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Bulleted list item #2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p><br> <strong>Output</strong></p>
+<div class="fragment">
+<ul>
+<li>Bulleted list item #1</li>
+<li>Bulleted list item #2</li>
+</ul>
+</div>
+</section>
+<section id="ordered-lists" class="slide level2 center">
+<h2>Ordered Lists</h2>
+<p><strong>Markdown</strong></p>
+<div class="fragment">
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Ordered list item #1</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Ordered list item #2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+<p><br> <strong>Output</strong></p>
+<div class="fragment">
+<ol type="1">
+<li>Ordered list item #1</li>
+<li>Ordered list item #2</li>
+</ol>
+</div>
+</section>
+<section id="spacing-matters-a-lot" class="slide level2 center">
+<h2>Spacing Matters (A Lot!)</h2>
+<ul>
+<li class="fragment"><p><strong>Don’t</strong> add spaces before the start of lines</p></li>
+<li class="fragment"><p><strong>Do</strong> add space between lines</p></li>
+</ul>
+</section>
+<section id="your-turn-5" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<ol type="1">
+<li class="fragment"><p>Working in your <code>report.qmd</code> file, delete the default content (everything below the YAML).</p></li>
+<li class="fragment"><p>Add a first-level header that says “Introduction”</p></li>
+</ol>
+</section>
+<section id="your-turn-continued" class="slide level2 your-turn center">
+<h2>Your Turn (Continued)</h2>
+<div class="fragment">
+<ol start="3" type="1">
+<li>Add this text (note the bold and italics) below the introduction header:</li>
+</ol>
+<div class="small">
+<blockquote>
+<p>This report is about <strong>three</strong> species of penguins:</p>
+<ol type="1">
+<li>Adelie</li>
+<li>Gentoo</li>
+<li>Chinstrap</li>
+</ol>
+<p>You’ll learn <em>so</em> much about the penguins. I hope you’re ready!</p>
+</blockquote>
+</div>
+</div>
+</section>
+<section id="your-turn-continued-1" class="slide level2 your-turn center">
+<h2>Your Turn (Continued)</h2>
+<ol start="4" type="1">
+<li class="fragment">Render your report again and make sure you see the changes.</li>
+</ol>
+</section>
+<section id="code-chunks" class="slide level2 inverse center">
+<h2>Code Chunks</h2>
+<aside class="notes">
+<p>We don’t just want to have text; we always want code</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="code-chunks-1" class="slide level2 center">
+<h2>Code Chunks</h2>
+<ul>
+<li class="fragment">Used to make numbers, graphs, tables, maps, etc (anything that you would use R to generate)</li>
+</ul>
+</section>
+<section class="slide level2 center">
+
+
+<img data-src="assets/quarto-overview-code-chunks.png" style="width:100.0%" class="r-stretch"></section>
+<section id="inserting-code-chunks" class="slide level2 center">
+<h2>Inserting Code Chunks</h2>
+
+<img data-src="assets/insert-code-chunk.png" class="r-stretch"></section>
+<section id="keyboard-shortcut" class="slide level2 center">
+<h2>Keyboard Shortcut</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Mac</strong></p>
+<p>Command + Option + I</p>
+</div><div class="column" style="width:50%;">
+<p><strong>Windows</strong></p>
+<p>Control + Alt + I</p>
+</div>
+</div>
+</section>
+<section id="running-code-chunks" class="slide level2 center">
+<h2>Running Code Chunks</h2>
+<ol type="1">
+<li class="fragment"><p>Run code like you would code in an R script file</p></li>
+<li class="fragment"><p>Use buttons in RStudio</p></li>
+</ol>
+</section>
+<section class="slide level2 center">
+
+
+<img data-src="assets/run-code-chunks.png" class="r-stretch"></section>
+<section id="code-chunk-options" class="slide level2 center">
+<h2>Code Chunk Options</h2>
+<ul>
+<li class="fragment"><p><code>output</code>: Do you want to display the output of the code chunk (e.g.&nbsp;the graph)?</p></li>
+<li class="fragment"><p><code>echo</code>: Do you want to display the code in the code chunk?</p></li>
+<li class="fragment"><p><code>message</code>: Do you want to display any messages R gives you?</p></li>
+<li class="fragment"><p><code>warning</code>: Do you want to display any warnings R gives you?</p></li>
+</ul>
+<aside class="notes">
+<p>message: tidyverse loading</p>
+<p>warning: removing rows when making plots</p>
+<p><a href="https://quarto.org/docs/reference/cells/cells-knitr.html">See all code chunk options</a></p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="code-chunk-options-1" class="slide level2 center">
+<h2>Code Chunk Options</h2>
+<div class="sourceCode" id="cb30"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="code-chunk-options-2" class="slide level2 center">
+<h2>Code Chunk Options</h2>
+<div class="sourceCode" id="cb31"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| warning: false</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> penguins,</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>       <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> bill_length_mm,</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>                     <span class="at">y =</span> bill_depth_mm)) <span class="sc">+</span></span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>()</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="global-chunk-options" class="slide level2 center">
+<h2>Global Chunk Options</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"My Report"</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"David Keyes"</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span><span class="at"> docx</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a><span class="fu">execute</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">output</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">echo</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">warning</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">message</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<aside class="notes">
+<p>This is what I recommend most of the time</p>
+<style type="text/css">
+        span.MJX_Assistive_MathML {
+          position:absolute!important;
+          clip: rect(1px, 1px, 1px, 1px);
+          padding: 1px 0 0 0!important;
+          border: 0!important;
+          height: 1px!important;
+          width: 1px!important;
+          overflow: hidden!important;
+          display:block!important;
+      }</style></aside>
+</section>
+<section id="tips-for-working-with-quarto" class="slide level2 center">
+<h2>Tips for Working with Quarto</h2>
+<ol type="1">
+<li class="fragment"><p>Run individual code chunks to make sure they work, but then render to make sure the whole document can render</p></li>
+<li class="fragment"><p>The Quarto document needs to be able to run on its own (packages, data, etc)</p></li>
+</ol>
+</section>
+<section id="your-turn-6" class="slide level2 your-turn center">
+<h2>Your Turn</h2>
+<ol type="1">
+<li class="fragment"><p>Working in your <code>report.qmd</code> file, right below the YAML, add a code chunk that loads the tidyverse and imports your penguins data to an object called <code>penguins</code></p></li>
+<li class="fragment"><p>Right below the Results header you added previously, create a second code chunk and add some code that you used to make a graph in the data viz section of the course.</p></li>
+<li class="fragment"><p>Render your document and make sure it works!</p></li>
+</ol>
 </section></section>
 <section>
 <section id="an-important-workflow-tip" class="title-slide slide level1 inverse center">

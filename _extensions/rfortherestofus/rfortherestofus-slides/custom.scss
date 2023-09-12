@@ -203,3 +203,13 @@ a > code {
 .center-slide {
     text-align: center;
 }
+
+.reveal .slide blockquote {
+  border-left: none;
+  padding-left: 1.5em;
+  color: white;
+}
+
+.reveal .slide blockquote li {
+  color: white;
+}
