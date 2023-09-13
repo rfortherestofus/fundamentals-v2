@@ -1,25 +1,43 @@
 ---
-title: "My Report"
+title: "My Fancy Report"
 author: "David Keyes"
-format: docx
+format: html
+execute: 
+  output: true
+  echo: false
+  warning: false
+  message: false
 ---
 
 ## Quarto
 
-Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+Quarto enables you to weave **together** content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+This is a new paragraph
 
 ## Running Code
 
 When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
 
 ```{r}
+library(tidyverse)
+
+penguins <- read_csv("penguins.csv")
+
+ggplot(data = penguins,
+       mapping = aes(x = bill_length_mm,
+                     y = bill_depth_mm)) +
+  geom_point()
+```
+
+```{r}
 1 + 1
 ```
 
-You can add options to executable code like this 
+You can add options to executable code like this
 
 ```{r}
-#| echo: false
+#| output: false
 2 * 2
 ```
 

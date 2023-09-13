@@ -641,9 +641,9 @@ format: html
 
 ## Your Turn {.your-turn}
 
-1. Go into the YAML and change the title to "My Super Fancy Report."
+1. Go into the YAML and change the title to "My Penguins Report."
 
-1. Change the output format to HTML by changing `format: word` to `format: html`.
+1. Change the output format to HTML by changing `format: docx` to `format: html`.
 
 1. Render again and open `report.html` to make sure your changes show up.
 
@@ -689,23 +689,23 @@ Text with **some words in bold** and *some words in italics*
 https://quarto.org/docs/authoring/markdown-basics.html
 :::
 
-## Headers
+## Headings {.center-slide}
 
-+---------------------+-----------------+
-| Markdown            | Output          |
-+=====================+=================+
-|     # Header 1      | # Header 1      |
-+---------------------+-----------------+
-|     ## Header 2     | ## Header 2     |
-+---------------------+-----------------+
-|     ### Header 3    | ### Header 3    |
-+---------------------+-----------------+
-|     #### Header 4   | #### Header 4   |
-+---------------------+-----------------+
-|     ##### Header 5  | ##### Header 5  |
-+---------------------+-----------------+
-|     ###### Header 6 | ###### Header 6 |
-+---------------------+-----------------+
++----------------------+-------------------+
+| Markdown             | Output            |
++======================+===================+
+|     # Heading 1      | # Heading 1       |
++----------------------+-------------------+
+|     ## Heading 2     | ## Heading 2      |
++----------------------+-------------------+
+|     ### Heading 3    | ### Heading 3     |
++----------------------+-------------------+
+|     #### Heading 4   | #### Heading 4    |
++----------------------+-------------------+
+|     ##### Heading 5  | ##### Heading 5   |
++----------------------+-------------------+
+|     ###### Heading 6 | ###### Heading 6  |
++----------------------+-------------------+
 
 
 ## Lists
@@ -758,12 +758,12 @@ https://quarto.org/docs/authoring/markdown-basics.html
 
 1. Working in your `report.qmd` file, delete the default content (everything below the YAML).
 
-1. Add a first-level header that says "Introduction"
+1. Add a first-level Heading that says "Introduction"
 
 ## Your Turn (Continued) {.your-turn}
 
 ::: {.fragment .nonincremental}
-3. Add this text (note the bold and italics) below the introduction header: 
+3. Add this text below the Introduction first-level heading: 
 
 ::: {.small}
 > This report is about **three** species of penguins: 
@@ -775,6 +775,7 @@ https://quarto.org/docs/authoring/markdown-basics.html
 > You'll learn *so* much about the penguins. I hope you're ready!
 :::
 
+Note the bold and italics!
 :::
 
 ## Your Turn (Continued) {.your-turn}
@@ -895,15 +896,17 @@ This is what I recommend most of the time
 
 ## Tips for Working with Quarto
 
+1. Use the source editor (not the visual editor)
+
 1. Run individual code chunks to make sure they work, but then render to make sure the whole document can render
 
-2. The Quarto document needs to be able to run on its own (packages, data, etc)
+1. The Quarto document needs to be able to run on its own (packages, data, etc)
 
 ## Your Turn {.your-turn}
 
-1. Working in your `report.qmd` file, right below the YAML, add a code chunk that loads the tidyverse and imports your penguins data to an object called `penguins`
+1. Working in your `report.qmd` file, right below the YAML, add a code chunk that loads the `tidyverse` and imports your penguins data to an object called `penguins`
 
-1. Right below the Results header you added previously, create a second code chunk and add some code that you used to make a graph in the data viz section of the course.
+1. Right below the Results Heading you added previously, create a second code chunk and add some code that you used to make a graph in the data viz section of the course.
 
 1. Render your document and make sure it works!
 
