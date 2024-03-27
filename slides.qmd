@@ -894,6 +894,8 @@ execute:
 This is what I recommend most of the time
 :::
 
+## Your Turn {.your-turn}
+
 ## Tips for Working with Quarto
 
 1. Use the source editor (not the visual editor)

@@ -1,0 +1,41 @@
+---
+title: My Penguins Report
+author: David Keyes
+format: html
+---
+
+```{r}
+library(tidyverse)
+
+penguins <- read_csv("penguins.csv")
+```
+
+
+# Introduction
+
+This report is about **three** species of penguins
+
+1. Adele
+1. Gentoo
+1. Chinstrap
+
+You'll learn *so* much about the penguins. I hope you're ready!
+
+# Results
+
+```{r}
+penguin_bill_length_by_island_and_sex <- penguins |> 
+  drop_na(sex) |> 
+  group_by(island, sex) |> 
+  summarize(mean_bill_length = mean(bill_length_mm))
+```
+
+```{r}
+ggplot(data = penguin_bill_length_by_island_and_sex,
+       mapping = aes(x = island,
+                     y = mean_bill_length,
+                     fill = sex)) +
+  geom_col()
+```
+
+

@@ -1,44 +1,64 @@
 ---
-title: "My Fancy Report"
+title: "My R Report"
 author: "David Keyes"
 format: html
 execute: 
-  output: true
-  echo: false
   warning: false
   message: false
+  echo: false
+  output: true
 ---
 
-## Quarto
-
-Quarto enables you to weave **together** content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
-
-This is a new paragraph
-
-## Running Code
-
-When you click the **Render** button a document will be generated that includes both content and the output of embedded code. You can embed code like this:
-
-```{r}
+```{r load_packages}
 library(tidyverse)
-
-penguins <- read_csv("penguins.csv")
-
-ggplot(data = penguins,
-       mapping = aes(x = bill_length_mm,
-                     y = bill_depth_mm)) +
-  geom_point()
+library(janitor)
+library(scales)
 ```
 
-```{r}
-1 + 1
+```{r import_data}
+survey_data <- read_tsv("2020-combined-survey-final.tsv") |> 
+  clean_names()
+
+avg_r_enjoyment <- survey_data |> 
+  drop_na(qr_enjoyment) |> 
+  group_by(qcountry) |> 
+  summarize(avg_enjoyment = mean(qr_enjoyment),
+            n = n()) |> 
+  filter(n >= 50) |> 
+  arrange(desc(avg_enjoyment)) |> 
+  drop_na(qcountry) |> 
+  mutate(avg_enjoyment_two_digits = number(avg_enjoyment, accuracy = 0.01))
 ```
 
-You can add options to executable code like this
+# Introduction
 
-```{r}
-#| output: false
-2 * 2
+Sint dolor do commodo occaecat qui exercitation culpa consequat aute veniam. Et velit cupidatat sit irure. Officia labore esse nostrud magna. Enim commodo pariatur cillum tempor non nisi magna. Laborum do dolor nulla excepteur adipisicing Lorem sit excepteur nisi eiusmod nostrud enim. Ipsum anim dolor consectetur minim officia cupidatat officia fugiat aliquip veniam qui proident.
+
+# Results
+
+Here is a chart that shows our results. 
+
+```{r data_viz}
+ggplot(data = avg_r_enjoyment,
+       mapping = aes(x = avg_enjoyment,
+                     y = qcountry,
+                     label = avg_enjoyment_two_digits)) +
+  geom_col(fill = "#6cabdd") +
+  geom_text(hjust = 1.2,
+            color = "white") +
+  theme_minimal() +
+  labs(title = "Average Enjoyment of R on a 5-Point Scale Among Users Around the World",
+       subtitle = "Only countries with 50 or more responses included",
+       y = NULL,
+       x = NULL)
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+# Conclusion
+
+Sint dolor do commodo occaecat qui exercitation culpa consequat aute veniam. Et velit cupidatat sit irure. Officia labore esse nostrud magna. Enim commodo pariatur cillum tempor non nisi magna. Laborum do dolor nulla excepteur adipisicing Lorem sit excepteur nisi eiusmod nostrud enim. Ipsum anim dolor consectetur minim officia cupidatat officia fugiat aliquip veniam qui proident.
+
+
+
+
+
+

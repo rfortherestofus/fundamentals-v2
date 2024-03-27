@@ -37,7 +37,7 @@ penguins |>
 # Use select() to keep the variables from island to the end
 
 penguins |> 
-  select(island:sex)
+  select(island:year)
 
 # Use the dropping syntax with - to keep the same variables as above (island to the end)
 
